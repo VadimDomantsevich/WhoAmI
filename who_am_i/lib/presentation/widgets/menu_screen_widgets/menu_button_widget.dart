@@ -14,7 +14,7 @@ class MenuButtonWidget extends StatelessWidget {
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          color: Colors.blueAccent,
+          color: Colors.grey.shade500,
         ),
         child: Center(
           child: Text(

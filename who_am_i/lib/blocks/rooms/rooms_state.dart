@@ -12,4 +12,11 @@ class RoomsState with _$RoomsState {
   const factory RoomsState.allLoaded({
     List<RoomModel>? rooms,
   }) = _AllLoaded;
+  const factory RoomsState.inGame({
+    required String roomID,
+    required List<UserModel> users,
+    required List<String> usersNotes,
+    required List<String> usersWords,
+    List<MessageModel>? messages,
+  }) = _InGame;
 }

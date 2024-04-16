@@ -33,7 +33,7 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
     //       uid: FirebaseAuth.instance.currentUser!.uid))!;
     // } else {
     //   print('creating');
-    //   currentUser = await _userService.create();
+    //   currentUser = await _userServiуce.create();
     // }
     state.mapOrNull(
       initial: (value) =>

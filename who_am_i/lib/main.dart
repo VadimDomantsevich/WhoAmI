@@ -49,6 +49,7 @@ class MainApp extends StatelessWidget {
             return BlocBuilder<RoomsBloc, RoomsState>(
               builder: (context, state) {
                 return MaterialApp(
+                  debugShowCheckedModeBanner: false,
                   home: Scaffold(
                     body: MenuScreenWidget(
                       user: UserModel(uid: value.uid, name: value.name),

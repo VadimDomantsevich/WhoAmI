@@ -20,6 +20,9 @@ mixin _$RoomModel {
   String get name => throw _privateConstructorUsedError;
   bool get isPrivate => throw _privateConstructorUsedError;
   List<UserModel>? get users => throw _privateConstructorUsedError;
+  List<String>? get usersNotes => throw _privateConstructorUsedError;
+  List<String>? get usersWords => throw _privateConstructorUsedError;
+  List<MessageModel>? get messages => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RoomModelCopyWith<RoomModel> get copyWith =>
@@ -32,7 +35,13 @@ abstract class $RoomModelCopyWith<$Res> {
       _$RoomModelCopyWithImpl<$Res, RoomModel>;
   @useResult
   $Res call(
-      {String roomID, String name, bool isPrivate, List<UserModel>? users});
+      {String roomID,
+      String name,
+      bool isPrivate,
+      List<UserModel>? users,
+      List<String>? usersNotes,
+      List<String>? usersWords,
+      List<MessageModel>? messages});
 }
 
 /// @nodoc
@@ -52,6 +61,9 @@ class _$RoomModelCopyWithImpl<$Res, $Val extends RoomModel>
     Object? name = null,
     Object? isPrivate = null,
     Object? users = freezed,
+    Object? usersNotes = freezed,
+    Object? usersWords = freezed,
+    Object? messages = freezed,
   }) {
     return _then(_value.copyWith(
       roomID: null == roomID
@@ -70,6 +82,18 @@ class _$RoomModelCopyWithImpl<$Res, $Val extends RoomModel>
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
               as List<UserModel>?,
+      usersNotes: freezed == usersNotes
+          ? _value.usersNotes
+          : usersNotes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      usersWords: freezed == usersWords
+          ? _value.usersWords
+          : usersWords // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      messages: freezed == messages
+          ? _value.messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<MessageModel>?,
     ) as $Val);
   }
 }
@@ -83,7 +107,13 @@ abstract class _$$RoomModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String roomID, String name, bool isPrivate, List<UserModel>? users});
+      {String roomID,
+      String name,
+      bool isPrivate,
+      List<UserModel>? users,
+      List<String>? usersNotes,
+      List<String>? usersWords,
+      List<MessageModel>? messages});
 }
 
 /// @nodoc
@@ -101,6 +131,9 @@ class __$$RoomModelImplCopyWithImpl<$Res>
     Object? name = null,
     Object? isPrivate = null,
     Object? users = freezed,
+    Object? usersNotes = freezed,
+    Object? usersWords = freezed,
+    Object? messages = freezed,
   }) {
     return _then(_$RoomModelImpl(
       roomID: null == roomID
@@ -119,6 +152,18 @@ class __$$RoomModelImplCopyWithImpl<$Res>
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
               as List<UserModel>?,
+      usersNotes: freezed == usersNotes
+          ? _value._usersNotes
+          : usersNotes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      usersWords: freezed == usersWords
+          ? _value._usersWords
+          : usersWords // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      messages: freezed == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<MessageModel>?,
     ));
   }
 }
@@ -130,8 +175,14 @@ class _$RoomModelImpl implements _RoomModel {
       {required this.roomID,
       required this.name,
       required this.isPrivate,
-      final List<UserModel>? users})
-      : _users = users;
+      final List<UserModel>? users,
+      final List<String>? usersNotes,
+      final List<String>? usersWords,
+      final List<MessageModel>? messages})
+      : _users = users,
+        _usersNotes = usersNotes,
+        _usersWords = usersWords,
+        _messages = messages;
 
   @override
   final String roomID;
@@ -149,9 +200,39 @@ class _$RoomModelImpl implements _RoomModel {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<String>? _usersNotes;
+  @override
+  List<String>? get usersNotes {
+    final value = _usersNotes;
+    if (value == null) return null;
+    if (_usersNotes is EqualUnmodifiableListView) return _usersNotes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _usersWords;
+  @override
+  List<String>? get usersWords {
+    final value = _usersWords;
+    if (value == null) return null;
+    if (_usersWords is EqualUnmodifiableListView) return _usersWords;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<MessageModel>? _messages;
+  @override
+  List<MessageModel>? get messages {
+    final value = _messages;
+    if (value == null) return null;
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'RoomModel(roomID: $roomID, name: $name, isPrivate: $isPrivate, users: $users)';
+    return 'RoomModel(roomID: $roomID, name: $name, isPrivate: $isPrivate, users: $users, usersNotes: $usersNotes, usersWords: $usersWords, messages: $messages)';
   }
 
   @override
@@ -163,12 +244,24 @@ class _$RoomModelImpl implements _RoomModel {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.isPrivate, isPrivate) ||
                 other.isPrivate == isPrivate) &&
-            const DeepCollectionEquality().equals(other._users, _users));
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            const DeepCollectionEquality()
+                .equals(other._usersNotes, _usersNotes) &&
+            const DeepCollectionEquality()
+                .equals(other._usersWords, _usersWords) &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, roomID, name, isPrivate,
-      const DeepCollectionEquality().hash(_users));
+  int get hashCode => Object.hash(
+      runtimeType,
+      roomID,
+      name,
+      isPrivate,
+      const DeepCollectionEquality().hash(_users),
+      const DeepCollectionEquality().hash(_usersNotes),
+      const DeepCollectionEquality().hash(_usersWords),
+      const DeepCollectionEquality().hash(_messages));
 
   @JsonKey(ignore: true)
   @override
@@ -182,7 +275,10 @@ abstract class _RoomModel implements RoomModel {
       {required final String roomID,
       required final String name,
       required final bool isPrivate,
-      final List<UserModel>? users}) = _$RoomModelImpl;
+      final List<UserModel>? users,
+      final List<String>? usersNotes,
+      final List<String>? usersWords,
+      final List<MessageModel>? messages}) = _$RoomModelImpl;
 
   @override
   String get roomID;
@@ -192,6 +288,12 @@ abstract class _RoomModel implements RoomModel {
   bool get isPrivate;
   @override
   List<UserModel>? get users;
+  @override
+  List<String>? get usersNotes;
+  @override
+  List<String>? get usersWords;
+  @override
+  List<MessageModel>? get messages;
   @override
   @JsonKey(ignore: true)
   _$$RoomModelImplCopyWith<_$RoomModelImpl> get copyWith =>

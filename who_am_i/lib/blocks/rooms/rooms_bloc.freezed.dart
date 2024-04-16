@@ -22,6 +22,11 @@ mixin _$RoomsEvent {
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
     required TResult Function(UserModel user) addUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +35,11 @@ mixin _$RoomsEvent {
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
     TResult? Function(UserModel user)? addUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +48,11 @@ mixin _$RoomsEvent {
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
     TResult Function(UserModel user)? addUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +62,11 @@ mixin _$RoomsEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +75,11 @@ mixin _$RoomsEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +88,11 @@ mixin _$RoomsEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +158,11 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
     required TResult Function(UserModel user) addUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
   }) {
     return init();
   }
@@ -139,6 +174,11 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
     TResult? Function(UserModel user)? addUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
   }) {
     return init?.call();
   }
@@ -150,6 +190,11 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
     TResult Function(UserModel user)? addUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -165,6 +210,11 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
   }) {
     return init(this);
   }
@@ -176,6 +226,11 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
     return init?.call(this);
   }
@@ -187,6 +242,11 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -281,6 +341,11 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
     required TResult Function(UserModel user) addUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
   }) {
     return createPrivateRoom(user);
   }
@@ -292,6 +357,11 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
     TResult? Function(UserModel user)? addUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
   }) {
     return createPrivateRoom?.call(user);
   }
@@ -303,6 +373,11 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
     TResult Function(UserModel user)? addUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
   }) {
     if (createPrivateRoom != null) {
@@ -318,6 +393,11 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
   }) {
     return createPrivateRoom(this);
   }
@@ -329,6 +409,11 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
     return createPrivateRoom?.call(this);
   }
@@ -340,6 +425,11 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
   }) {
     if (createPrivateRoom != null) {
@@ -428,6 +518,11 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
     required TResult Function(UserModel user) addUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
   }) {
     return delete(roomID);
   }
@@ -439,6 +534,11 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
     TResult? Function(UserModel user)? addUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
   }) {
     return delete?.call(roomID);
   }
@@ -450,6 +550,11 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
     TResult Function(UserModel user)? addUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -465,6 +570,11 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
   }) {
     return delete(this);
   }
@@ -476,6 +586,11 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
     return delete?.call(this);
   }
@@ -487,6 +602,11 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -585,6 +705,11 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
     required TResult Function(UserModel user) addUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
   }) {
     return addUser(user);
   }
@@ -596,6 +721,11 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
     TResult? Function(UserModel user)? addUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
   }) {
     return addUser?.call(user);
   }
@@ -607,6 +737,11 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
     TResult Function(UserModel user)? addUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
   }) {
     if (addUser != null) {
@@ -622,6 +757,11 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
   }) {
     return addUser(this);
   }
@@ -633,6 +773,11 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
     return addUser?.call(this);
   }
@@ -644,6 +789,11 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
   }) {
     if (addUser != null) {
@@ -664,6 +814,980 @@ abstract class AddUserRoomEvent implements RoomsEvent {
 }
 
 /// @nodoc
+abstract class _$$StartGameEventImplCopyWith<$Res> {
+  factory _$$StartGameEventImplCopyWith(_$StartGameEventImpl value,
+          $Res Function(_$StartGameEventImpl) then) =
+      __$$StartGameEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel user, String roomID});
+
+  $UserModelCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$StartGameEventImplCopyWithImpl<$Res>
+    extends _$RoomsEventCopyWithImpl<$Res, _$StartGameEventImpl>
+    implements _$$StartGameEventImplCopyWith<$Res> {
+  __$$StartGameEventImplCopyWithImpl(
+      _$StartGameEventImpl _value, $Res Function(_$StartGameEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+    Object? roomID = null,
+  }) {
+    return _then(_$StartGameEventImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+      roomID: null == roomID
+          ? _value.roomID
+          : roomID // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$StartGameEventImpl implements StartGameEvent {
+  const _$StartGameEventImpl({required this.user, required this.roomID});
+
+  @override
+  final UserModel user;
+  @override
+  final String roomID;
+
+  @override
+  String toString() {
+    return 'RoomsEvent.startGame(user: $user, roomID: $roomID)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StartGameEventImpl &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.roomID, roomID) || other.roomID == roomID));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user, roomID);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartGameEventImplCopyWith<_$StartGameEventImpl> get copyWith =>
+      __$$StartGameEventImplCopyWithImpl<_$StartGameEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(UserModel user) createPrivateRoom,
+    required TResult Function(String roomID) delete,
+    required TResult Function(UserModel user) addUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
+  }) {
+    return startGame(user, roomID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(UserModel user)? createPrivateRoom,
+    TResult? Function(String roomID)? delete,
+    TResult? Function(UserModel user)? addUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
+  }) {
+    return startGame?.call(user, roomID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(UserModel user)? createPrivateRoom,
+    TResult Function(String roomID)? delete,
+    TResult Function(UserModel user)? addUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (startGame != null) {
+      return startGame(user, roomID);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitRoomsEvent value) init,
+    required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
+    required TResult Function(DeleteRoomEvent value) delete,
+    required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
+  }) {
+    return startGame(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitRoomsEvent value)? init,
+    TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult? Function(DeleteRoomEvent value)? delete,
+    TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
+  }) {
+    return startGame?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitRoomsEvent value)? init,
+    TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult Function(DeleteRoomEvent value)? delete,
+    TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (startGame != null) {
+      return startGame(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StartGameEvent implements RoomsEvent {
+  const factory StartGameEvent(
+      {required final UserModel user,
+      required final String roomID}) = _$StartGameEventImpl;
+
+  UserModel get user;
+  String get roomID;
+  @JsonKey(ignore: true)
+  _$$StartGameEventImplCopyWith<_$StartGameEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadGameEventImplCopyWith<$Res> {
+  factory _$$LoadGameEventImplCopyWith(
+          _$LoadGameEventImpl value, $Res Function(_$LoadGameEventImpl) then) =
+      __$$LoadGameEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel user, String roomID});
+
+  $UserModelCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$LoadGameEventImplCopyWithImpl<$Res>
+    extends _$RoomsEventCopyWithImpl<$Res, _$LoadGameEventImpl>
+    implements _$$LoadGameEventImplCopyWith<$Res> {
+  __$$LoadGameEventImplCopyWithImpl(
+      _$LoadGameEventImpl _value, $Res Function(_$LoadGameEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+    Object? roomID = null,
+  }) {
+    return _then(_$LoadGameEventImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+      roomID: null == roomID
+          ? _value.roomID
+          : roomID // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadGameEventImpl implements LoadGameEvent {
+  const _$LoadGameEventImpl({required this.user, required this.roomID});
+
+  @override
+  final UserModel user;
+  @override
+  final String roomID;
+
+  @override
+  String toString() {
+    return 'RoomsEvent.loadGame(user: $user, roomID: $roomID)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadGameEventImpl &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.roomID, roomID) || other.roomID == roomID));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user, roomID);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadGameEventImplCopyWith<_$LoadGameEventImpl> get copyWith =>
+      __$$LoadGameEventImplCopyWithImpl<_$LoadGameEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(UserModel user) createPrivateRoom,
+    required TResult Function(String roomID) delete,
+    required TResult Function(UserModel user) addUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
+  }) {
+    return loadGame(user, roomID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(UserModel user)? createPrivateRoom,
+    TResult? Function(String roomID)? delete,
+    TResult? Function(UserModel user)? addUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
+  }) {
+    return loadGame?.call(user, roomID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(UserModel user)? createPrivateRoom,
+    TResult Function(String roomID)? delete,
+    TResult Function(UserModel user)? addUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (loadGame != null) {
+      return loadGame(user, roomID);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitRoomsEvent value) init,
+    required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
+    required TResult Function(DeleteRoomEvent value) delete,
+    required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
+  }) {
+    return loadGame(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitRoomsEvent value)? init,
+    TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult? Function(DeleteRoomEvent value)? delete,
+    TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
+  }) {
+    return loadGame?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitRoomsEvent value)? init,
+    TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult Function(DeleteRoomEvent value)? delete,
+    TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (loadGame != null) {
+      return loadGame(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadGameEvent implements RoomsEvent {
+  const factory LoadGameEvent(
+      {required final UserModel user,
+      required final String roomID}) = _$LoadGameEventImpl;
+
+  UserModel get user;
+  String get roomID;
+  @JsonKey(ignore: true)
+  _$$LoadGameEventImplCopyWith<_$LoadGameEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SendMessageEventImplCopyWith<$Res> {
+  factory _$$SendMessageEventImplCopyWith(_$SendMessageEventImpl value,
+          $Res Function(_$SendMessageEventImpl) then) =
+      __$$SendMessageEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MessageModel message});
+
+  $MessageModelCopyWith<$Res> get message;
+}
+
+/// @nodoc
+class __$$SendMessageEventImplCopyWithImpl<$Res>
+    extends _$RoomsEventCopyWithImpl<$Res, _$SendMessageEventImpl>
+    implements _$$SendMessageEventImplCopyWith<$Res> {
+  __$$SendMessageEventImplCopyWithImpl(_$SendMessageEventImpl _value,
+      $Res Function(_$SendMessageEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$SendMessageEventImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as MessageModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MessageModelCopyWith<$Res> get message {
+    return $MessageModelCopyWith<$Res>(_value.message, (value) {
+      return _then(_value.copyWith(message: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$SendMessageEventImpl implements SendMessageEvent {
+  const _$SendMessageEventImpl({required this.message});
+
+  @override
+  final MessageModel message;
+
+  @override
+  String toString() {
+    return 'RoomsEvent.sendMessage(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendMessageEventImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendMessageEventImplCopyWith<_$SendMessageEventImpl> get copyWith =>
+      __$$SendMessageEventImplCopyWithImpl<_$SendMessageEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(UserModel user) createPrivateRoom,
+    required TResult Function(String roomID) delete,
+    required TResult Function(UserModel user) addUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
+  }) {
+    return sendMessage(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(UserModel user)? createPrivateRoom,
+    TResult? Function(String roomID)? delete,
+    TResult? Function(UserModel user)? addUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
+  }) {
+    return sendMessage?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(UserModel user)? createPrivateRoom,
+    TResult Function(String roomID)? delete,
+    TResult Function(UserModel user)? addUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitRoomsEvent value) init,
+    required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
+    required TResult Function(DeleteRoomEvent value) delete,
+    required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
+  }) {
+    return sendMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitRoomsEvent value)? init,
+    TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult? Function(DeleteRoomEvent value)? delete,
+    TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
+  }) {
+    return sendMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitRoomsEvent value)? init,
+    TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult Function(DeleteRoomEvent value)? delete,
+    TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SendMessageEvent implements RoomsEvent {
+  const factory SendMessageEvent({required final MessageModel message}) =
+      _$SendMessageEventImpl;
+
+  MessageModel get message;
+  @JsonKey(ignore: true)
+  _$$SendMessageEventImplCopyWith<_$SendMessageEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateNoteEventImplCopyWith<$Res> {
+  factory _$$UpdateNoteEventImplCopyWith(_$UpdateNoteEventImpl value,
+          $Res Function(_$UpdateNoteEventImpl) then) =
+      __$$UpdateNoteEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel user, String note});
+
+  $UserModelCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$UpdateNoteEventImplCopyWithImpl<$Res>
+    extends _$RoomsEventCopyWithImpl<$Res, _$UpdateNoteEventImpl>
+    implements _$$UpdateNoteEventImplCopyWith<$Res> {
+  __$$UpdateNoteEventImplCopyWithImpl(
+      _$UpdateNoteEventImpl _value, $Res Function(_$UpdateNoteEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+    Object? note = null,
+  }) {
+    return _then(_$UpdateNoteEventImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+      note: null == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateNoteEventImpl implements UpdateNoteEvent {
+  const _$UpdateNoteEventImpl({required this.user, required this.note});
+
+  @override
+  final UserModel user;
+  @override
+  final String note;
+
+  @override
+  String toString() {
+    return 'RoomsEvent.updateNote(user: $user, note: $note)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateNoteEventImpl &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.note, note) || other.note == note));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user, note);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateNoteEventImplCopyWith<_$UpdateNoteEventImpl> get copyWith =>
+      __$$UpdateNoteEventImplCopyWithImpl<_$UpdateNoteEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(UserModel user) createPrivateRoom,
+    required TResult Function(String roomID) delete,
+    required TResult Function(UserModel user) addUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
+  }) {
+    return updateNote(user, note);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(UserModel user)? createPrivateRoom,
+    TResult? Function(String roomID)? delete,
+    TResult? Function(UserModel user)? addUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
+  }) {
+    return updateNote?.call(user, note);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(UserModel user)? createPrivateRoom,
+    TResult Function(String roomID)? delete,
+    TResult Function(UserModel user)? addUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (updateNote != null) {
+      return updateNote(user, note);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitRoomsEvent value) init,
+    required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
+    required TResult Function(DeleteRoomEvent value) delete,
+    required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
+  }) {
+    return updateNote(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitRoomsEvent value)? init,
+    TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult? Function(DeleteRoomEvent value)? delete,
+    TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
+  }) {
+    return updateNote?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitRoomsEvent value)? init,
+    TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult Function(DeleteRoomEvent value)? delete,
+    TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (updateNote != null) {
+      return updateNote(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateNoteEvent implements RoomsEvent {
+  const factory UpdateNoteEvent(
+      {required final UserModel user,
+      required final String note}) = _$UpdateNoteEventImpl;
+
+  UserModel get user;
+  String get note;
+  @JsonKey(ignore: true)
+  _$$UpdateNoteEventImplCopyWith<_$UpdateNoteEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateWordEventImplCopyWith<$Res> {
+  factory _$$UpdateWordEventImplCopyWith(_$UpdateWordEventImpl value,
+          $Res Function(_$UpdateWordEventImpl) then) =
+      __$$UpdateWordEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel user, String word});
+
+  $UserModelCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$UpdateWordEventImplCopyWithImpl<$Res>
+    extends _$RoomsEventCopyWithImpl<$Res, _$UpdateWordEventImpl>
+    implements _$$UpdateWordEventImplCopyWith<$Res> {
+  __$$UpdateWordEventImplCopyWithImpl(
+      _$UpdateWordEventImpl _value, $Res Function(_$UpdateWordEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+    Object? word = null,
+  }) {
+    return _then(_$UpdateWordEventImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+      word: null == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateWordEventImpl implements UpdateWordEvent {
+  const _$UpdateWordEventImpl({required this.user, required this.word});
+
+  @override
+  final UserModel user;
+  @override
+  final String word;
+
+  @override
+  String toString() {
+    return 'RoomsEvent.updateWord(user: $user, word: $word)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateWordEventImpl &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.word, word) || other.word == word));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user, word);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateWordEventImplCopyWith<_$UpdateWordEventImpl> get copyWith =>
+      __$$UpdateWordEventImplCopyWithImpl<_$UpdateWordEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(UserModel user) createPrivateRoom,
+    required TResult Function(String roomID) delete,
+    required TResult Function(UserModel user) addUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
+  }) {
+    return updateWord(user, word);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(UserModel user)? createPrivateRoom,
+    TResult? Function(String roomID)? delete,
+    TResult? Function(UserModel user)? addUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
+  }) {
+    return updateWord?.call(user, word);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(UserModel user)? createPrivateRoom,
+    TResult Function(String roomID)? delete,
+    TResult Function(UserModel user)? addUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (updateWord != null) {
+      return updateWord(user, word);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitRoomsEvent value) init,
+    required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
+    required TResult Function(DeleteRoomEvent value) delete,
+    required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
+  }) {
+    return updateWord(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitRoomsEvent value)? init,
+    TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult? Function(DeleteRoomEvent value)? delete,
+    TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
+  }) {
+    return updateWord?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitRoomsEvent value)? init,
+    TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult Function(DeleteRoomEvent value)? delete,
+    TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (updateWord != null) {
+      return updateWord(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateWordEvent implements RoomsEvent {
+  const factory UpdateWordEvent(
+      {required final UserModel user,
+      required final String word}) = _$UpdateWordEventImpl;
+
+  UserModel get user;
+  String get word;
+  @JsonKey(ignore: true)
+  _$$UpdateWordEventImplCopyWith<_$UpdateWordEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$RoomsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -672,6 +1796,13 @@ mixin _$RoomsState {
             String roomID, String name, bool isPrivate, List<UserModel>? users)
         loaded,
     required TResult Function(List<RoomModel>? rooms) allLoaded,
+    required TResult Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)
+        inGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -681,6 +1812,13 @@ mixin _$RoomsState {
             String roomID, String name, bool isPrivate, List<UserModel>? users)?
         loaded,
     TResult? Function(List<RoomModel>? rooms)? allLoaded,
+    TResult? Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)?
+        inGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -690,6 +1828,13 @@ mixin _$RoomsState {
             String roomID, String name, bool isPrivate, List<UserModel>? users)?
         loaded,
     TResult Function(List<RoomModel>? rooms)? allLoaded,
+    TResult Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)?
+        inGame,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -698,6 +1843,7 @@ mixin _$RoomsState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_AllLoaded value) allLoaded,
+    required TResult Function(_InGame value) inGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -705,6 +1851,7 @@ mixin _$RoomsState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_AllLoaded value)? allLoaded,
+    TResult? Function(_InGame value)? inGame,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -712,6 +1859,7 @@ mixin _$RoomsState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_AllLoaded value)? allLoaded,
+    TResult Function(_InGame value)? inGame,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -778,6 +1926,13 @@ class _$InitialImpl implements _Initial {
             String roomID, String name, bool isPrivate, List<UserModel>? users)
         loaded,
     required TResult Function(List<RoomModel>? rooms) allLoaded,
+    required TResult Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)
+        inGame,
   }) {
     return initial();
   }
@@ -790,6 +1945,13 @@ class _$InitialImpl implements _Initial {
             String roomID, String name, bool isPrivate, List<UserModel>? users)?
         loaded,
     TResult? Function(List<RoomModel>? rooms)? allLoaded,
+    TResult? Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)?
+        inGame,
   }) {
     return initial?.call();
   }
@@ -802,6 +1964,13 @@ class _$InitialImpl implements _Initial {
             String roomID, String name, bool isPrivate, List<UserModel>? users)?
         loaded,
     TResult Function(List<RoomModel>? rooms)? allLoaded,
+    TResult Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)?
+        inGame,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -816,6 +1985,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_AllLoaded value) allLoaded,
+    required TResult Function(_InGame value) inGame,
   }) {
     return initial(this);
   }
@@ -826,6 +1996,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_AllLoaded value)? allLoaded,
+    TResult? Function(_InGame value)? inGame,
   }) {
     return initial?.call(this);
   }
@@ -836,6 +2007,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_AllLoaded value)? allLoaded,
+    TResult Function(_InGame value)? inGame,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -957,6 +2129,13 @@ class _$LoadedImpl implements _Loaded {
             String roomID, String name, bool isPrivate, List<UserModel>? users)
         loaded,
     required TResult Function(List<RoomModel>? rooms) allLoaded,
+    required TResult Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)
+        inGame,
   }) {
     return loaded(roomID, name, isPrivate, users);
   }
@@ -969,6 +2148,13 @@ class _$LoadedImpl implements _Loaded {
             String roomID, String name, bool isPrivate, List<UserModel>? users)?
         loaded,
     TResult? Function(List<RoomModel>? rooms)? allLoaded,
+    TResult? Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)?
+        inGame,
   }) {
     return loaded?.call(roomID, name, isPrivate, users);
   }
@@ -981,6 +2167,13 @@ class _$LoadedImpl implements _Loaded {
             String roomID, String name, bool isPrivate, List<UserModel>? users)?
         loaded,
     TResult Function(List<RoomModel>? rooms)? allLoaded,
+    TResult Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)?
+        inGame,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -995,6 +2188,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_AllLoaded value) allLoaded,
+    required TResult Function(_InGame value) inGame,
   }) {
     return loaded(this);
   }
@@ -1005,6 +2199,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_AllLoaded value)? allLoaded,
+    TResult? Function(_InGame value)? inGame,
   }) {
     return loaded?.call(this);
   }
@@ -1015,6 +2210,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_AllLoaded value)? allLoaded,
+    TResult Function(_InGame value)? inGame,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1117,6 +2313,13 @@ class _$AllLoadedImpl implements _AllLoaded {
             String roomID, String name, bool isPrivate, List<UserModel>? users)
         loaded,
     required TResult Function(List<RoomModel>? rooms) allLoaded,
+    required TResult Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)
+        inGame,
   }) {
     return allLoaded(rooms);
   }
@@ -1129,6 +2332,13 @@ class _$AllLoadedImpl implements _AllLoaded {
             String roomID, String name, bool isPrivate, List<UserModel>? users)?
         loaded,
     TResult? Function(List<RoomModel>? rooms)? allLoaded,
+    TResult? Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)?
+        inGame,
   }) {
     return allLoaded?.call(rooms);
   }
@@ -1141,6 +2351,13 @@ class _$AllLoadedImpl implements _AllLoaded {
             String roomID, String name, bool isPrivate, List<UserModel>? users)?
         loaded,
     TResult Function(List<RoomModel>? rooms)? allLoaded,
+    TResult Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)?
+        inGame,
     required TResult orElse(),
   }) {
     if (allLoaded != null) {
@@ -1155,6 +2372,7 @@ class _$AllLoadedImpl implements _AllLoaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_AllLoaded value) allLoaded,
+    required TResult Function(_InGame value) inGame,
   }) {
     return allLoaded(this);
   }
@@ -1165,6 +2383,7 @@ class _$AllLoadedImpl implements _AllLoaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_AllLoaded value)? allLoaded,
+    TResult? Function(_InGame value)? inGame,
   }) {
     return allLoaded?.call(this);
   }
@@ -1175,6 +2394,7 @@ class _$AllLoadedImpl implements _AllLoaded {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_AllLoaded value)? allLoaded,
+    TResult Function(_InGame value)? inGame,
     required TResult orElse(),
   }) {
     if (allLoaded != null) {
@@ -1190,5 +2410,262 @@ abstract class _AllLoaded implements RoomsState {
   List<RoomModel>? get rooms;
   @JsonKey(ignore: true)
   _$$AllLoadedImplCopyWith<_$AllLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InGameImplCopyWith<$Res> {
+  factory _$$InGameImplCopyWith(
+          _$InGameImpl value, $Res Function(_$InGameImpl) then) =
+      __$$InGameImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String roomID,
+      List<UserModel> users,
+      List<String> usersNotes,
+      List<String> usersWords,
+      List<MessageModel>? messages});
+}
+
+/// @nodoc
+class __$$InGameImplCopyWithImpl<$Res>
+    extends _$RoomsStateCopyWithImpl<$Res, _$InGameImpl>
+    implements _$$InGameImplCopyWith<$Res> {
+  __$$InGameImplCopyWithImpl(
+      _$InGameImpl _value, $Res Function(_$InGameImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? roomID = null,
+    Object? users = null,
+    Object? usersNotes = null,
+    Object? usersWords = null,
+    Object? messages = freezed,
+  }) {
+    return _then(_$InGameImpl(
+      roomID: null == roomID
+          ? _value.roomID
+          : roomID // ignore: cast_nullable_to_non_nullable
+              as String,
+      users: null == users
+          ? _value._users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<UserModel>,
+      usersNotes: null == usersNotes
+          ? _value._usersNotes
+          : usersNotes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      usersWords: null == usersWords
+          ? _value._usersWords
+          : usersWords // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      messages: freezed == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<MessageModel>?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InGameImpl implements _InGame {
+  const _$InGameImpl(
+      {required this.roomID,
+      required final List<UserModel> users,
+      required final List<String> usersNotes,
+      required final List<String> usersWords,
+      final List<MessageModel>? messages})
+      : _users = users,
+        _usersNotes = usersNotes,
+        _usersWords = usersWords,
+        _messages = messages;
+
+  @override
+  final String roomID;
+  final List<UserModel> _users;
+  @override
+  List<UserModel> get users {
+    if (_users is EqualUnmodifiableListView) return _users;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_users);
+  }
+
+  final List<String> _usersNotes;
+  @override
+  List<String> get usersNotes {
+    if (_usersNotes is EqualUnmodifiableListView) return _usersNotes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_usersNotes);
+  }
+
+  final List<String> _usersWords;
+  @override
+  List<String> get usersWords {
+    if (_usersWords is EqualUnmodifiableListView) return _usersWords;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_usersWords);
+  }
+
+  final List<MessageModel>? _messages;
+  @override
+  List<MessageModel>? get messages {
+    final value = _messages;
+    if (value == null) return null;
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'RoomsState.inGame(roomID: $roomID, users: $users, usersNotes: $usersNotes, usersWords: $usersWords, messages: $messages)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InGameImpl &&
+            (identical(other.roomID, roomID) || other.roomID == roomID) &&
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            const DeepCollectionEquality()
+                .equals(other._usersNotes, _usersNotes) &&
+            const DeepCollectionEquality()
+                .equals(other._usersWords, _usersWords) &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      roomID,
+      const DeepCollectionEquality().hash(_users),
+      const DeepCollectionEquality().hash(_usersNotes),
+      const DeepCollectionEquality().hash(_usersWords),
+      const DeepCollectionEquality().hash(_messages));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InGameImplCopyWith<_$InGameImpl> get copyWith =>
+      __$$InGameImplCopyWithImpl<_$InGameImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+            String roomID, String name, bool isPrivate, List<UserModel>? users)
+        loaded,
+    required TResult Function(List<RoomModel>? rooms) allLoaded,
+    required TResult Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)
+        inGame,
+  }) {
+    return inGame(roomID, users, usersNotes, usersWords, messages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+            String roomID, String name, bool isPrivate, List<UserModel>? users)?
+        loaded,
+    TResult? Function(List<RoomModel>? rooms)? allLoaded,
+    TResult? Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)?
+        inGame,
+  }) {
+    return inGame?.call(roomID, users, usersNotes, usersWords, messages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            String roomID, String name, bool isPrivate, List<UserModel>? users)?
+        loaded,
+    TResult Function(List<RoomModel>? rooms)? allLoaded,
+    TResult Function(
+            String roomID,
+            List<UserModel> users,
+            List<String> usersNotes,
+            List<String> usersWords,
+            List<MessageModel>? messages)?
+        inGame,
+    required TResult orElse(),
+  }) {
+    if (inGame != null) {
+      return inGame(roomID, users, usersNotes, usersWords, messages);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_AllLoaded value) allLoaded,
+    required TResult Function(_InGame value) inGame,
+  }) {
+    return inGame(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_AllLoaded value)? allLoaded,
+    TResult? Function(_InGame value)? inGame,
+  }) {
+    return inGame?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_AllLoaded value)? allLoaded,
+    TResult Function(_InGame value)? inGame,
+    required TResult orElse(),
+  }) {
+    if (inGame != null) {
+      return inGame(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InGame implements RoomsState {
+  const factory _InGame(
+      {required final String roomID,
+      required final List<UserModel> users,
+      required final List<String> usersNotes,
+      required final List<String> usersWords,
+      final List<MessageModel>? messages}) = _$InGameImpl;
+
+  String get roomID;
+  List<UserModel> get users;
+  List<String> get usersNotes;
+  List<String> get usersWords;
+  List<MessageModel>? get messages;
+  @JsonKey(ignore: true)
+  _$$InGameImplCopyWith<_$InGameImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

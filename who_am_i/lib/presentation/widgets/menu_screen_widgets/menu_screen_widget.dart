@@ -5,6 +5,7 @@ import 'package:who_am_i/blocks/users/users_bloc.dart';
 import 'package:who_am_i/data/models/user.dart';
 import 'package:who_am_i/presentation/widgets/menu_screen_widgets/menu_button_widget.dart';
 import 'package:who_am_i/presentation/widgets/menu_screen_widgets/name_textfield_widget.dart';
+import 'package:who_am_i/presentation/widgets/menu_screen_widgets/room_dialog_widget.dart';
 
 class MenuScreenWidget extends StatelessWidget {
   final UserModel user;
@@ -17,54 +18,64 @@ class MenuScreenWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController nameController =
         TextEditingController(text: user.name);
-    return SafeArea(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Who Am I',
-              style: TextStyle(
-                fontSize: 36.0,
+    return BlocBuilder<RoomsBloc, RoomsState>(
+      builder: (context, state) {
+        return state.maybeMap(
+          loaded: (value) {
+            return RoomDialogWidget(roomID: value.roomID);
+          },
+          orElse: () {
+            return SafeArea(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Who Am I',
+                      style: TextStyle(
+                        fontSize: 36.0,
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        top: 32.0,
+                        bottom: 10.0,
+                      ),
+                      child: Icon(
+                        Icons.accessibility,
+                        size: 100.0,
+                      ),
+                    ),
+                    NameTextFieldWidget(
+                      controller: nameController,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: MenuButtonWidget(
+                        onTap: () => (context
+                            .read<UsersBloc>()
+                            .add(UpdateUserEvent(name: nameController.text))),
+                        text: 'Сохранить имя пользователя',
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: MenuButtonWidget(
+                        onTap: () {
+                          (context
+                              .read<RoomsBloc>()
+                              .add(CreatePrivateRoomEvent(user: user)));
+                        },
+                        text: 'Создать приватную комнату',
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(
-                top: 32.0,
-                bottom: 10.0,
-              ),
-              child: Icon(
-                Icons.accessibility,
-                size: 100.0,
-              ),
-            ),
-            NameTextFieldWidget(
-              controller: nameController,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: MenuButtonWidget(
-                onTap: () => (context
-                    .read<UsersBloc>()
-                    .add(UpdateUserEvent(name: nameController.text))),
-                text: 'Сохранить имя пользователя',
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: MenuButtonWidget(
-                onTap: () {
-                  (context
-                      .read<RoomsBloc>()
-                      .add(CreatePrivateRoomEvent(user: user)));
-                      
-                },
-                text: 'Создать приватную комнату',
-              ),
-            ),
-          ],
-        ),
-      ),
+            );
+          },
+        );
+      },
     );
   }
 }

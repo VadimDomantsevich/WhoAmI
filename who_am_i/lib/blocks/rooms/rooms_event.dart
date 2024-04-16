@@ -12,4 +12,23 @@ class RoomsEvent with _$RoomsEvent {
   const factory RoomsEvent.addUser({
     required UserModel user,
   }) = AddUserRoomEvent;
+  const factory RoomsEvent.startGame({
+    required UserModel user,
+    required String roomID,
+  }) = StartGameEvent;
+  const factory RoomsEvent.loadGame({
+    required UserModel user,
+    required String roomID,
+  }) = LoadGameEvent;
+  const factory RoomsEvent.sendMessage({
+    required MessageModel message,
+  }) = SendMessageEvent;
+  const factory RoomsEvent.updateNote({
+    required UserModel user,
+    required String note,
+  }) = UpdateNoteEvent;
+  const factory RoomsEvent.updateWord({
+    required UserModel user,
+    required String word,
+  }) = UpdateWordEvent;
 }

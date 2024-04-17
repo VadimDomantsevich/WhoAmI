@@ -189,7 +189,6 @@ class RoomService {
     final note = {
       uid: updatedNote,
     };
-    print('note: ${note}');
     await databaseRef.update(note);
   }
 
@@ -207,6 +206,19 @@ class RoomService {
       },
     };
     databaseRef.update(newMessage);
+  }
+
+  Future<void> updateWord(
+      {required String roomID,
+      required String uid,
+      required String updatedWord}) async {
+    DatabaseReference databaseRef =
+        FirebaseDatabase.instance.ref('rooms/$roomID/usersWords');
+    final word = {
+      uid: updatedWord,
+    };
+    print('word: ${word}');
+    await databaseRef.update(word);
   }
 
   Future<void> deleteRoom({required String roomID}) async {

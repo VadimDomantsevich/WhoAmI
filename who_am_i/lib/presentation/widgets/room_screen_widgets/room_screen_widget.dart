@@ -16,6 +16,7 @@ class RoomScreenWidget extends StatelessWidget {
     TextEditingController noteController = TextEditingController();
     return BlocBuilder<RoomsBloc, RoomsState>(
       builder: (context, state) {
+        //Listener here?
         return state.maybeMap(
           initial: (value) {
             //Start game event
@@ -52,7 +53,14 @@ class RoomScreenWidget extends StatelessWidget {
                         children: [
                           //Stack containers
                           PlayerContainerWidget(
-                            user: user,
+                            user: value.users[0],
+                            currentUserUid: user.uid,
+                            word: 'Boo', //value.usersWords[0],
+                          ),
+                          PlayerContainerWidget(
+                            user: value.users[0],
+                            currentUserUid: user.uid,
+                            word: 'Boo', //value.usersWords[0],
                           ),
                         ],
                       ),

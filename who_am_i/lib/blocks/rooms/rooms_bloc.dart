@@ -17,6 +17,7 @@ class RoomsBloc extends Bloc<RoomsEvent, RoomsState> {
     on<StartGameEvent>(_onStartGameEvent);
     on<UpdateNoteEvent>(_onUpdateNoteEvent);
     on<SendMessageEvent>(_onSendMessageEvent);
+    on<UpdateWordEvent>(_onUpdateWordEvent);
     add(const InitRoomsEvent());
   }
 
@@ -104,6 +105,18 @@ class RoomsBloc extends Bloc<RoomsEvent, RoomsState> {
           roomID: value.roomID,
           message: event.message,
         );
+      },
+    );
+  }
+
+  Future<void> _onUpdateWordEvent(
+    UpdateWordEvent event,
+    Emitter<RoomsState> emit,
+  ) async {
+    state.mapOrNull(
+      inGame: (value) {
+        _roomService.updateWord(
+            roomID: value.roomID, uid: event.user.uid, updatedWord: event.word);
       },
     );
   }

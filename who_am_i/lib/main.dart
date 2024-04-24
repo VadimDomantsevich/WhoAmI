@@ -41,17 +41,20 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UsersBloc, UsersState>(
       builder: (context, state) {
+        TextEditingController nameController = TextEditingController();
         return state.maybeMap(
           initial: (value) {
             return Container();
           },
           loaded: (value) {
+            nameController.text = value.name;
             return BlocBuilder<RoomsBloc, RoomsState>(
               builder: (context, state) {
                 return MaterialApp(
                   debugShowCheckedModeBanner: false,
                   home: Scaffold(
                     body: MenuScreenWidget(
+                      nameController: nameController,
                       user: UserModel(uid: value.uid, name: value.name),
                     ),
                   ),

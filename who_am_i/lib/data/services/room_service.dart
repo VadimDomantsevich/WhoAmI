@@ -51,19 +51,30 @@ class RoomService {
     }
   }
 
-  Future<void> updateRoomUsers(
-      {required String roomID, required List<UserModel> users}) async {
+  Future<void> addUser(
+      {required String roomID, required UserModel user}) async {
     DatabaseReference databaseRef =
-        FirebaseDatabase.instance.ref('rooms/$roomID');
-    TransactionResult result = await databaseRef.runTransaction((room) {
-      Map<String, dynamic> _room = Map<String, dynamic>.from(room as Map);
-      _room["users"] = users;
+        FirebaseDatabase.instance.ref('rooms/$roomID/users');
+    final newUser = {user.uid: user.name};
+    await databaseRef.update(newUser);
+    // TransactionResult result = await databaseRef.runTransaction((room) {
+    //   Map<String, dynamic> _room = Map<String, dynamic>.from(room as Map);
+    //   _room["users"] = users;
 
-      // databaseRef.update({
-      //   "users": users,
-      // });
-      return Transaction.success(room);
-    });
+    //   // databaseRef.update({
+    //   //   "users": users,
+    //   // });
+    //   return Transaction.success(room);
+    // });
+  }
+
+  Future<void> removeUser({required String roomID, required String uid}) async {
+    DatabaseReference databaseRef =
+        FirebaseDatabase.instance.ref('rooms/$roomID/users/$uid');
+    print('inside');
+    final snapshot = await databaseRef.get();
+    print(snapshot.value);
+    await databaseRef.remove();
   }
 
   Future<RoomModel?> loadGame(
@@ -134,12 +145,12 @@ class RoomService {
       {required String roomID, required UserModel user}) async {
     DatabaseReference databaseRef =
         FirebaseDatabase.instance.ref('rooms/$roomID');
-    List<String> usersNotes = [
-      '',
-    ];
-    List<String> usersWords = [
-      '',
-    ];
+    // List<String> usersNotes = [
+    //   '',
+    // ];
+    // List<String> usersWords = [
+    //   '',
+    // ];
     final messages = {
       '${DateTime.timestamp().millisecondsSinceEpoch}': {
         'uid': "",
@@ -153,20 +164,19 @@ class RoomService {
       // }
     };
     final updatedRoom = {
-      'usersNotes': usersNotes,
-      'usersWords': usersWords,
+      // 'usersNotes': usersNotes,
+      // 'usersWords': usersWords,
       'messages': messages,
     };
     await databaseRef.update(updatedRoom);
     //test
-
     return RoomModel(
       roomID: roomID,
       name: 'user',
       isPrivate: true,
       users: [user],
-      usersNotes: usersNotes,
-      usersWords: usersWords,
+      usersNotes: [''],
+      usersWords: [''],
       messages: [],
       // <MessageModel>[
       //   MessageModel(

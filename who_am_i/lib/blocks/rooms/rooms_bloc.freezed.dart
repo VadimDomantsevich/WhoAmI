@@ -21,10 +21,14 @@ mixin _$RoomsEvent {
     required TResult Function() init,
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
-    required TResult Function(UserModel user) addUser,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
     required TResult Function(UserModel user, String roomID) startGame,
     required TResult Function(UserModel user, String roomID) loadGame,
     required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
     required TResult Function(UserModel user, String note) updateNote,
     required TResult Function(UserModel user, String word) updateWord,
   }) =>
@@ -34,10 +38,13 @@ mixin _$RoomsEvent {
     TResult? Function()? init,
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
-    TResult? Function(UserModel user)? addUser,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
     TResult? Function(UserModel user, String roomID)? startGame,
     TResult? Function(UserModel user, String roomID)? loadGame,
     TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult? Function(UserModel user, String note)? updateNote,
     TResult? Function(UserModel user, String word)? updateWord,
   }) =>
@@ -47,10 +54,13 @@ mixin _$RoomsEvent {
     TResult Function()? init,
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
-    TResult Function(UserModel user)? addUser,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
     TResult Function(UserModel user, String roomID)? startGame,
     TResult Function(UserModel user, String roomID)? loadGame,
     TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult Function(UserModel user, String note)? updateNote,
     TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
@@ -62,9 +72,11 @@ mixin _$RoomsEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
     required TResult Function(StartGameEvent value) startGame,
     required TResult Function(LoadGameEvent value) loadGame,
     required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
     required TResult Function(UpdateNoteEvent value) updateNote,
     required TResult Function(UpdateWordEvent value) updateWord,
   }) =>
@@ -75,9 +87,11 @@ mixin _$RoomsEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
     TResult? Function(StartGameEvent value)? startGame,
     TResult? Function(LoadGameEvent value)? loadGame,
     TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
     TResult? Function(UpdateNoteEvent value)? updateNote,
     TResult? Function(UpdateWordEvent value)? updateWord,
   }) =>
@@ -88,9 +102,11 @@ mixin _$RoomsEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
     TResult Function(StartGameEvent value)? startGame,
     TResult Function(LoadGameEvent value)? loadGame,
     TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
     TResult Function(UpdateNoteEvent value)? updateNote,
     TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
@@ -157,10 +173,14 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     required TResult Function() init,
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
-    required TResult Function(UserModel user) addUser,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
     required TResult Function(UserModel user, String roomID) startGame,
     required TResult Function(UserModel user, String roomID) loadGame,
     required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
     required TResult Function(UserModel user, String note) updateNote,
     required TResult Function(UserModel user, String word) updateWord,
   }) {
@@ -173,10 +193,13 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     TResult? Function()? init,
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
-    TResult? Function(UserModel user)? addUser,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
     TResult? Function(UserModel user, String roomID)? startGame,
     TResult? Function(UserModel user, String roomID)? loadGame,
     TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult? Function(UserModel user, String note)? updateNote,
     TResult? Function(UserModel user, String word)? updateWord,
   }) {
@@ -189,10 +212,13 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     TResult Function()? init,
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
-    TResult Function(UserModel user)? addUser,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
     TResult Function(UserModel user, String roomID)? startGame,
     TResult Function(UserModel user, String roomID)? loadGame,
     TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult Function(UserModel user, String note)? updateNote,
     TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
@@ -210,9 +236,11 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
     required TResult Function(StartGameEvent value) startGame,
     required TResult Function(LoadGameEvent value) loadGame,
     required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
     required TResult Function(UpdateNoteEvent value) updateNote,
     required TResult Function(UpdateWordEvent value) updateWord,
   }) {
@@ -226,9 +254,11 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
     TResult? Function(StartGameEvent value)? startGame,
     TResult? Function(LoadGameEvent value)? loadGame,
     TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
     TResult? Function(UpdateNoteEvent value)? updateNote,
     TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
@@ -242,9 +272,11 @@ class _$InitRoomsEventImpl implements InitRoomsEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
     TResult Function(StartGameEvent value)? startGame,
     TResult Function(LoadGameEvent value)? loadGame,
     TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
     TResult Function(UpdateNoteEvent value)? updateNote,
     TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
@@ -340,10 +372,14 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     required TResult Function() init,
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
-    required TResult Function(UserModel user) addUser,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
     required TResult Function(UserModel user, String roomID) startGame,
     required TResult Function(UserModel user, String roomID) loadGame,
     required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
     required TResult Function(UserModel user, String note) updateNote,
     required TResult Function(UserModel user, String word) updateWord,
   }) {
@@ -356,10 +392,13 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     TResult? Function()? init,
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
-    TResult? Function(UserModel user)? addUser,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
     TResult? Function(UserModel user, String roomID)? startGame,
     TResult? Function(UserModel user, String roomID)? loadGame,
     TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult? Function(UserModel user, String note)? updateNote,
     TResult? Function(UserModel user, String word)? updateWord,
   }) {
@@ -372,10 +411,13 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     TResult Function()? init,
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
-    TResult Function(UserModel user)? addUser,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
     TResult Function(UserModel user, String roomID)? startGame,
     TResult Function(UserModel user, String roomID)? loadGame,
     TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult Function(UserModel user, String note)? updateNote,
     TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
@@ -393,9 +435,11 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
     required TResult Function(StartGameEvent value) startGame,
     required TResult Function(LoadGameEvent value) loadGame,
     required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
     required TResult Function(UpdateNoteEvent value) updateNote,
     required TResult Function(UpdateWordEvent value) updateWord,
   }) {
@@ -409,9 +453,11 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
     TResult? Function(StartGameEvent value)? startGame,
     TResult? Function(LoadGameEvent value)? loadGame,
     TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
     TResult? Function(UpdateNoteEvent value)? updateNote,
     TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
@@ -425,9 +471,11 @@ class _$CreatePrivateRoomEventImpl implements CreatePrivateRoomEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
     TResult Function(StartGameEvent value)? startGame,
     TResult Function(LoadGameEvent value)? loadGame,
     TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
     TResult Function(UpdateNoteEvent value)? updateNote,
     TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
@@ -517,10 +565,14 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     required TResult Function() init,
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
-    required TResult Function(UserModel user) addUser,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
     required TResult Function(UserModel user, String roomID) startGame,
     required TResult Function(UserModel user, String roomID) loadGame,
     required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
     required TResult Function(UserModel user, String note) updateNote,
     required TResult Function(UserModel user, String word) updateWord,
   }) {
@@ -533,10 +585,13 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     TResult? Function()? init,
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
-    TResult? Function(UserModel user)? addUser,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
     TResult? Function(UserModel user, String roomID)? startGame,
     TResult? Function(UserModel user, String roomID)? loadGame,
     TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult? Function(UserModel user, String note)? updateNote,
     TResult? Function(UserModel user, String word)? updateWord,
   }) {
@@ -549,10 +604,13 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     TResult Function()? init,
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
-    TResult Function(UserModel user)? addUser,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
     TResult Function(UserModel user, String roomID)? startGame,
     TResult Function(UserModel user, String roomID)? loadGame,
     TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult Function(UserModel user, String note)? updateNote,
     TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
@@ -570,9 +628,11 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
     required TResult Function(StartGameEvent value) startGame,
     required TResult Function(LoadGameEvent value) loadGame,
     required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
     required TResult Function(UpdateNoteEvent value) updateNote,
     required TResult Function(UpdateWordEvent value) updateWord,
   }) {
@@ -586,9 +646,11 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
     TResult? Function(StartGameEvent value)? startGame,
     TResult? Function(LoadGameEvent value)? loadGame,
     TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
     TResult? Function(UpdateNoteEvent value)? updateNote,
     TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
@@ -602,9 +664,11 @@ class _$DeleteRoomEventImpl implements DeleteRoomEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
     TResult Function(StartGameEvent value)? startGame,
     TResult Function(LoadGameEvent value)? loadGame,
     TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
     TResult Function(UpdateNoteEvent value)? updateNote,
     TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
@@ -632,7 +696,7 @@ abstract class _$$AddUserRoomEventImplCopyWith<$Res> {
           $Res Function(_$AddUserRoomEventImpl) then) =
       __$$AddUserRoomEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserModel user});
+  $Res call({String roomID, UserModel user});
 
   $UserModelCopyWith<$Res> get user;
 }
@@ -648,9 +712,14 @@ class __$$AddUserRoomEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? roomID = null,
     Object? user = null,
   }) {
     return _then(_$AddUserRoomEventImpl(
+      roomID: null == roomID
+          ? _value.roomID
+          : roomID // ignore: cast_nullable_to_non_nullable
+              as String,
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -670,14 +739,16 @@ class __$$AddUserRoomEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddUserRoomEventImpl implements AddUserRoomEvent {
-  const _$AddUserRoomEventImpl({required this.user});
+  const _$AddUserRoomEventImpl({required this.roomID, required this.user});
 
+  @override
+  final String roomID;
   @override
   final UserModel user;
 
   @override
   String toString() {
-    return 'RoomsEvent.addUser(user: $user)';
+    return 'RoomsEvent.addUser(roomID: $roomID, user: $user)';
   }
 
   @override
@@ -685,11 +756,12 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddUserRoomEventImpl &&
+            (identical(other.roomID, roomID) || other.roomID == roomID) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, roomID, user);
 
   @JsonKey(ignore: true)
   @override
@@ -704,14 +776,18 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     required TResult Function() init,
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
-    required TResult Function(UserModel user) addUser,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
     required TResult Function(UserModel user, String roomID) startGame,
     required TResult Function(UserModel user, String roomID) loadGame,
     required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
     required TResult Function(UserModel user, String note) updateNote,
     required TResult Function(UserModel user, String word) updateWord,
   }) {
-    return addUser(user);
+    return addUser(roomID, user);
   }
 
   @override
@@ -720,14 +796,17 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     TResult? Function()? init,
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
-    TResult? Function(UserModel user)? addUser,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
     TResult? Function(UserModel user, String roomID)? startGame,
     TResult? Function(UserModel user, String roomID)? loadGame,
     TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult? Function(UserModel user, String note)? updateNote,
     TResult? Function(UserModel user, String word)? updateWord,
   }) {
-    return addUser?.call(user);
+    return addUser?.call(roomID, user);
   }
 
   @override
@@ -736,16 +815,19 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     TResult Function()? init,
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
-    TResult Function(UserModel user)? addUser,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
     TResult Function(UserModel user, String roomID)? startGame,
     TResult Function(UserModel user, String roomID)? loadGame,
     TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult Function(UserModel user, String note)? updateNote,
     TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
   }) {
     if (addUser != null) {
-      return addUser(user);
+      return addUser(roomID, user);
     }
     return orElse();
   }
@@ -757,9 +839,11 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
     required TResult Function(StartGameEvent value) startGame,
     required TResult Function(LoadGameEvent value) loadGame,
     required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
     required TResult Function(UpdateNoteEvent value) updateNote,
     required TResult Function(UpdateWordEvent value) updateWord,
   }) {
@@ -773,9 +857,11 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
     TResult? Function(StartGameEvent value)? startGame,
     TResult? Function(LoadGameEvent value)? loadGame,
     TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
     TResult? Function(UpdateNoteEvent value)? updateNote,
     TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
@@ -789,9 +875,11 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
     TResult Function(StartGameEvent value)? startGame,
     TResult Function(LoadGameEvent value)? loadGame,
     TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
     TResult Function(UpdateNoteEvent value)? updateNote,
     TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
@@ -804,12 +892,217 @@ class _$AddUserRoomEventImpl implements AddUserRoomEvent {
 }
 
 abstract class AddUserRoomEvent implements RoomsEvent {
-  const factory AddUserRoomEvent({required final UserModel user}) =
-      _$AddUserRoomEventImpl;
+  const factory AddUserRoomEvent(
+      {required final String roomID,
+      required final UserModel user}) = _$AddUserRoomEventImpl;
 
+  String get roomID;
   UserModel get user;
   @JsonKey(ignore: true)
   _$$AddUserRoomEventImplCopyWith<_$AddUserRoomEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveUserRoomEventImplCopyWith<$Res> {
+  factory _$$RemoveUserRoomEventImplCopyWith(_$RemoveUserRoomEventImpl value,
+          $Res Function(_$RemoveUserRoomEventImpl) then) =
+      __$$RemoveUserRoomEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String roomID, String uid});
+}
+
+/// @nodoc
+class __$$RemoveUserRoomEventImplCopyWithImpl<$Res>
+    extends _$RoomsEventCopyWithImpl<$Res, _$RemoveUserRoomEventImpl>
+    implements _$$RemoveUserRoomEventImplCopyWith<$Res> {
+  __$$RemoveUserRoomEventImplCopyWithImpl(_$RemoveUserRoomEventImpl _value,
+      $Res Function(_$RemoveUserRoomEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? roomID = null,
+    Object? uid = null,
+  }) {
+    return _then(_$RemoveUserRoomEventImpl(
+      roomID: null == roomID
+          ? _value.roomID
+          : roomID // ignore: cast_nullable_to_non_nullable
+              as String,
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoveUserRoomEventImpl implements RemoveUserRoomEvent {
+  const _$RemoveUserRoomEventImpl({required this.roomID, required this.uid});
+
+  @override
+  final String roomID;
+  @override
+  final String uid;
+
+  @override
+  String toString() {
+    return 'RoomsEvent.removeUser(roomID: $roomID, uid: $uid)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveUserRoomEventImpl &&
+            (identical(other.roomID, roomID) || other.roomID == roomID) &&
+            (identical(other.uid, uid) || other.uid == uid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, roomID, uid);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveUserRoomEventImplCopyWith<_$RemoveUserRoomEventImpl> get copyWith =>
+      __$$RemoveUserRoomEventImplCopyWithImpl<_$RemoveUserRoomEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(UserModel user) createPrivateRoom,
+    required TResult Function(String roomID) delete,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
+  }) {
+    return removeUser(roomID, uid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(UserModel user)? createPrivateRoom,
+    TResult? Function(String roomID)? delete,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
+  }) {
+    return removeUser?.call(roomID, uid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(UserModel user)? createPrivateRoom,
+    TResult Function(String roomID)? delete,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (removeUser != null) {
+      return removeUser(roomID, uid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitRoomsEvent value) init,
+    required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
+    required TResult Function(DeleteRoomEvent value) delete,
+    required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
+  }) {
+    return removeUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitRoomsEvent value)? init,
+    TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult? Function(DeleteRoomEvent value)? delete,
+    TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
+  }) {
+    return removeUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitRoomsEvent value)? init,
+    TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult Function(DeleteRoomEvent value)? delete,
+    TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (removeUser != null) {
+      return removeUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveUserRoomEvent implements RoomsEvent {
+  const factory RemoveUserRoomEvent(
+      {required final String roomID,
+      required final String uid}) = _$RemoveUserRoomEventImpl;
+
+  String get roomID;
+  String get uid;
+  @JsonKey(ignore: true)
+  _$$RemoveUserRoomEventImplCopyWith<_$RemoveUserRoomEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -899,10 +1192,14 @@ class _$StartGameEventImpl implements StartGameEvent {
     required TResult Function() init,
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
-    required TResult Function(UserModel user) addUser,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
     required TResult Function(UserModel user, String roomID) startGame,
     required TResult Function(UserModel user, String roomID) loadGame,
     required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
     required TResult Function(UserModel user, String note) updateNote,
     required TResult Function(UserModel user, String word) updateWord,
   }) {
@@ -915,10 +1212,13 @@ class _$StartGameEventImpl implements StartGameEvent {
     TResult? Function()? init,
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
-    TResult? Function(UserModel user)? addUser,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
     TResult? Function(UserModel user, String roomID)? startGame,
     TResult? Function(UserModel user, String roomID)? loadGame,
     TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult? Function(UserModel user, String note)? updateNote,
     TResult? Function(UserModel user, String word)? updateWord,
   }) {
@@ -931,10 +1231,13 @@ class _$StartGameEventImpl implements StartGameEvent {
     TResult Function()? init,
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
-    TResult Function(UserModel user)? addUser,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
     TResult Function(UserModel user, String roomID)? startGame,
     TResult Function(UserModel user, String roomID)? loadGame,
     TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult Function(UserModel user, String note)? updateNote,
     TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
@@ -952,9 +1255,11 @@ class _$StartGameEventImpl implements StartGameEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
     required TResult Function(StartGameEvent value) startGame,
     required TResult Function(LoadGameEvent value) loadGame,
     required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
     required TResult Function(UpdateNoteEvent value) updateNote,
     required TResult Function(UpdateWordEvent value) updateWord,
   }) {
@@ -968,9 +1273,11 @@ class _$StartGameEventImpl implements StartGameEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
     TResult? Function(StartGameEvent value)? startGame,
     TResult? Function(LoadGameEvent value)? loadGame,
     TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
     TResult? Function(UpdateNoteEvent value)? updateNote,
     TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
@@ -984,9 +1291,11 @@ class _$StartGameEventImpl implements StartGameEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
     TResult Function(StartGameEvent value)? startGame,
     TResult Function(LoadGameEvent value)? loadGame,
     TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
     TResult Function(UpdateNoteEvent value)? updateNote,
     TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
@@ -1095,10 +1404,14 @@ class _$LoadGameEventImpl implements LoadGameEvent {
     required TResult Function() init,
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
-    required TResult Function(UserModel user) addUser,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
     required TResult Function(UserModel user, String roomID) startGame,
     required TResult Function(UserModel user, String roomID) loadGame,
     required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
     required TResult Function(UserModel user, String note) updateNote,
     required TResult Function(UserModel user, String word) updateWord,
   }) {
@@ -1111,10 +1424,13 @@ class _$LoadGameEventImpl implements LoadGameEvent {
     TResult? Function()? init,
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
-    TResult? Function(UserModel user)? addUser,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
     TResult? Function(UserModel user, String roomID)? startGame,
     TResult? Function(UserModel user, String roomID)? loadGame,
     TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult? Function(UserModel user, String note)? updateNote,
     TResult? Function(UserModel user, String word)? updateWord,
   }) {
@@ -1127,10 +1443,13 @@ class _$LoadGameEventImpl implements LoadGameEvent {
     TResult Function()? init,
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
-    TResult Function(UserModel user)? addUser,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
     TResult Function(UserModel user, String roomID)? startGame,
     TResult Function(UserModel user, String roomID)? loadGame,
     TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult Function(UserModel user, String note)? updateNote,
     TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
@@ -1148,9 +1467,11 @@ class _$LoadGameEventImpl implements LoadGameEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
     required TResult Function(StartGameEvent value) startGame,
     required TResult Function(LoadGameEvent value) loadGame,
     required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
     required TResult Function(UpdateNoteEvent value) updateNote,
     required TResult Function(UpdateWordEvent value) updateWord,
   }) {
@@ -1164,9 +1485,11 @@ class _$LoadGameEventImpl implements LoadGameEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
     TResult? Function(StartGameEvent value)? startGame,
     TResult? Function(LoadGameEvent value)? loadGame,
     TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
     TResult? Function(UpdateNoteEvent value)? updateNote,
     TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
@@ -1180,9 +1503,11 @@ class _$LoadGameEventImpl implements LoadGameEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
     TResult Function(StartGameEvent value)? startGame,
     TResult Function(LoadGameEvent value)? loadGame,
     TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
     TResult Function(UpdateNoteEvent value)? updateNote,
     TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
@@ -1284,10 +1609,14 @@ class _$SendMessageEventImpl implements SendMessageEvent {
     required TResult Function() init,
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
-    required TResult Function(UserModel user) addUser,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
     required TResult Function(UserModel user, String roomID) startGame,
     required TResult Function(UserModel user, String roomID) loadGame,
     required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
     required TResult Function(UserModel user, String note) updateNote,
     required TResult Function(UserModel user, String word) updateWord,
   }) {
@@ -1300,10 +1629,13 @@ class _$SendMessageEventImpl implements SendMessageEvent {
     TResult? Function()? init,
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
-    TResult? Function(UserModel user)? addUser,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
     TResult? Function(UserModel user, String roomID)? startGame,
     TResult? Function(UserModel user, String roomID)? loadGame,
     TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult? Function(UserModel user, String note)? updateNote,
     TResult? Function(UserModel user, String word)? updateWord,
   }) {
@@ -1316,10 +1648,13 @@ class _$SendMessageEventImpl implements SendMessageEvent {
     TResult Function()? init,
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
-    TResult Function(UserModel user)? addUser,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
     TResult Function(UserModel user, String roomID)? startGame,
     TResult Function(UserModel user, String roomID)? loadGame,
     TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult Function(UserModel user, String note)? updateNote,
     TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
@@ -1337,9 +1672,11 @@ class _$SendMessageEventImpl implements SendMessageEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
     required TResult Function(StartGameEvent value) startGame,
     required TResult Function(LoadGameEvent value) loadGame,
     required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
     required TResult Function(UpdateNoteEvent value) updateNote,
     required TResult Function(UpdateWordEvent value) updateWord,
   }) {
@@ -1353,9 +1690,11 @@ class _$SendMessageEventImpl implements SendMessageEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
     TResult? Function(StartGameEvent value)? startGame,
     TResult? Function(LoadGameEvent value)? loadGame,
     TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
     TResult? Function(UpdateNoteEvent value)? updateNote,
     TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
@@ -1369,9 +1708,11 @@ class _$SendMessageEventImpl implements SendMessageEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
     TResult Function(StartGameEvent value)? startGame,
     TResult Function(LoadGameEvent value)? loadGame,
     TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
     TResult Function(UpdateNoteEvent value)? updateNote,
     TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
@@ -1390,6 +1731,231 @@ abstract class SendMessageEvent implements RoomsEvent {
   MessageModel get message;
   @JsonKey(ignore: true)
   _$$SendMessageEventImplCopyWith<_$SendMessageEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateGameEventImplCopyWith<$Res> {
+  factory _$$UpdateGameEventImplCopyWith(_$UpdateGameEventImpl value,
+          $Res Function(_$UpdateGameEventImpl) then) =
+      __$$UpdateGameEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel user, String roomID, DataSnapshot snapshot});
+
+  $UserModelCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$UpdateGameEventImplCopyWithImpl<$Res>
+    extends _$RoomsEventCopyWithImpl<$Res, _$UpdateGameEventImpl>
+    implements _$$UpdateGameEventImplCopyWith<$Res> {
+  __$$UpdateGameEventImplCopyWithImpl(
+      _$UpdateGameEventImpl _value, $Res Function(_$UpdateGameEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+    Object? roomID = null,
+    Object? snapshot = null,
+  }) {
+    return _then(_$UpdateGameEventImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+      roomID: null == roomID
+          ? _value.roomID
+          : roomID // ignore: cast_nullable_to_non_nullable
+              as String,
+      snapshot: null == snapshot
+          ? _value.snapshot
+          : snapshot // ignore: cast_nullable_to_non_nullable
+              as DataSnapshot,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateGameEventImpl implements UpdateGameEvent {
+  const _$UpdateGameEventImpl(
+      {required this.user, required this.roomID, required this.snapshot});
+
+  @override
+  final UserModel user;
+  @override
+  final String roomID;
+  @override
+  final DataSnapshot snapshot;
+
+  @override
+  String toString() {
+    return 'RoomsEvent.updateGame(user: $user, roomID: $roomID, snapshot: $snapshot)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateGameEventImpl &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.roomID, roomID) || other.roomID == roomID) &&
+            (identical(other.snapshot, snapshot) ||
+                other.snapshot == snapshot));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user, roomID, snapshot);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateGameEventImplCopyWith<_$UpdateGameEventImpl> get copyWith =>
+      __$$UpdateGameEventImplCopyWithImpl<_$UpdateGameEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(UserModel user) createPrivateRoom,
+    required TResult Function(String roomID) delete,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
+    required TResult Function(UserModel user, String roomID) startGame,
+    required TResult Function(UserModel user, String roomID) loadGame,
+    required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
+    required TResult Function(UserModel user, String note) updateNote,
+    required TResult Function(UserModel user, String word) updateWord,
+  }) {
+    return updateGame(user, roomID, snapshot);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(UserModel user)? createPrivateRoom,
+    TResult? Function(String roomID)? delete,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
+    TResult? Function(UserModel user, String roomID)? startGame,
+    TResult? Function(UserModel user, String roomID)? loadGame,
+    TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
+    TResult? Function(UserModel user, String note)? updateNote,
+    TResult? Function(UserModel user, String word)? updateWord,
+  }) {
+    return updateGame?.call(user, roomID, snapshot);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(UserModel user)? createPrivateRoom,
+    TResult Function(String roomID)? delete,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
+    TResult Function(UserModel user, String roomID)? startGame,
+    TResult Function(UserModel user, String roomID)? loadGame,
+    TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
+    TResult Function(UserModel user, String note)? updateNote,
+    TResult Function(UserModel user, String word)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (updateGame != null) {
+      return updateGame(user, roomID, snapshot);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitRoomsEvent value) init,
+    required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
+    required TResult Function(DeleteRoomEvent value) delete,
+    required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
+    required TResult Function(StartGameEvent value) startGame,
+    required TResult Function(LoadGameEvent value) loadGame,
+    required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
+    required TResult Function(UpdateNoteEvent value) updateNote,
+    required TResult Function(UpdateWordEvent value) updateWord,
+  }) {
+    return updateGame(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitRoomsEvent value)? init,
+    TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult? Function(DeleteRoomEvent value)? delete,
+    TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
+    TResult? Function(StartGameEvent value)? startGame,
+    TResult? Function(LoadGameEvent value)? loadGame,
+    TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
+    TResult? Function(UpdateNoteEvent value)? updateNote,
+    TResult? Function(UpdateWordEvent value)? updateWord,
+  }) {
+    return updateGame?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitRoomsEvent value)? init,
+    TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
+    TResult Function(DeleteRoomEvent value)? delete,
+    TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
+    TResult Function(StartGameEvent value)? startGame,
+    TResult Function(LoadGameEvent value)? loadGame,
+    TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
+    TResult Function(UpdateNoteEvent value)? updateNote,
+    TResult Function(UpdateWordEvent value)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (updateGame != null) {
+      return updateGame(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateGameEvent implements RoomsEvent {
+  const factory UpdateGameEvent(
+      {required final UserModel user,
+      required final String roomID,
+      required final DataSnapshot snapshot}) = _$UpdateGameEventImpl;
+
+  UserModel get user;
+  String get roomID;
+  DataSnapshot get snapshot;
+  @JsonKey(ignore: true)
+  _$$UpdateGameEventImplCopyWith<_$UpdateGameEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1479,10 +2045,14 @@ class _$UpdateNoteEventImpl implements UpdateNoteEvent {
     required TResult Function() init,
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
-    required TResult Function(UserModel user) addUser,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
     required TResult Function(UserModel user, String roomID) startGame,
     required TResult Function(UserModel user, String roomID) loadGame,
     required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
     required TResult Function(UserModel user, String note) updateNote,
     required TResult Function(UserModel user, String word) updateWord,
   }) {
@@ -1495,10 +2065,13 @@ class _$UpdateNoteEventImpl implements UpdateNoteEvent {
     TResult? Function()? init,
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
-    TResult? Function(UserModel user)? addUser,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
     TResult? Function(UserModel user, String roomID)? startGame,
     TResult? Function(UserModel user, String roomID)? loadGame,
     TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult? Function(UserModel user, String note)? updateNote,
     TResult? Function(UserModel user, String word)? updateWord,
   }) {
@@ -1511,10 +2084,13 @@ class _$UpdateNoteEventImpl implements UpdateNoteEvent {
     TResult Function()? init,
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
-    TResult Function(UserModel user)? addUser,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
     TResult Function(UserModel user, String roomID)? startGame,
     TResult Function(UserModel user, String roomID)? loadGame,
     TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult Function(UserModel user, String note)? updateNote,
     TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
@@ -1532,9 +2108,11 @@ class _$UpdateNoteEventImpl implements UpdateNoteEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
     required TResult Function(StartGameEvent value) startGame,
     required TResult Function(LoadGameEvent value) loadGame,
     required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
     required TResult Function(UpdateNoteEvent value) updateNote,
     required TResult Function(UpdateWordEvent value) updateWord,
   }) {
@@ -1548,9 +2126,11 @@ class _$UpdateNoteEventImpl implements UpdateNoteEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
     TResult? Function(StartGameEvent value)? startGame,
     TResult? Function(LoadGameEvent value)? loadGame,
     TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
     TResult? Function(UpdateNoteEvent value)? updateNote,
     TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
@@ -1564,9 +2144,11 @@ class _$UpdateNoteEventImpl implements UpdateNoteEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
     TResult Function(StartGameEvent value)? startGame,
     TResult Function(LoadGameEvent value)? loadGame,
     TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
     TResult Function(UpdateNoteEvent value)? updateNote,
     TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),
@@ -1676,10 +2258,14 @@ class _$UpdateWordEventImpl implements UpdateWordEvent {
     required TResult Function() init,
     required TResult Function(UserModel user) createPrivateRoom,
     required TResult Function(String roomID) delete,
-    required TResult Function(UserModel user) addUser,
+    required TResult Function(String roomID, UserModel user) addUser,
+    required TResult Function(String roomID, String uid) removeUser,
     required TResult Function(UserModel user, String roomID) startGame,
     required TResult Function(UserModel user, String roomID) loadGame,
     required TResult Function(MessageModel message) sendMessage,
+    required TResult Function(
+            UserModel user, String roomID, DataSnapshot snapshot)
+        updateGame,
     required TResult Function(UserModel user, String note) updateNote,
     required TResult Function(UserModel user, String word) updateWord,
   }) {
@@ -1692,10 +2278,13 @@ class _$UpdateWordEventImpl implements UpdateWordEvent {
     TResult? Function()? init,
     TResult? Function(UserModel user)? createPrivateRoom,
     TResult? Function(String roomID)? delete,
-    TResult? Function(UserModel user)? addUser,
+    TResult? Function(String roomID, UserModel user)? addUser,
+    TResult? Function(String roomID, String uid)? removeUser,
     TResult? Function(UserModel user, String roomID)? startGame,
     TResult? Function(UserModel user, String roomID)? loadGame,
     TResult? Function(MessageModel message)? sendMessage,
+    TResult? Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult? Function(UserModel user, String note)? updateNote,
     TResult? Function(UserModel user, String word)? updateWord,
   }) {
@@ -1708,10 +2297,13 @@ class _$UpdateWordEventImpl implements UpdateWordEvent {
     TResult Function()? init,
     TResult Function(UserModel user)? createPrivateRoom,
     TResult Function(String roomID)? delete,
-    TResult Function(UserModel user)? addUser,
+    TResult Function(String roomID, UserModel user)? addUser,
+    TResult Function(String roomID, String uid)? removeUser,
     TResult Function(UserModel user, String roomID)? startGame,
     TResult Function(UserModel user, String roomID)? loadGame,
     TResult Function(MessageModel message)? sendMessage,
+    TResult Function(UserModel user, String roomID, DataSnapshot snapshot)?
+        updateGame,
     TResult Function(UserModel user, String note)? updateNote,
     TResult Function(UserModel user, String word)? updateWord,
     required TResult orElse(),
@@ -1729,9 +2321,11 @@ class _$UpdateWordEventImpl implements UpdateWordEvent {
     required TResult Function(CreatePrivateRoomEvent value) createPrivateRoom,
     required TResult Function(DeleteRoomEvent value) delete,
     required TResult Function(AddUserRoomEvent value) addUser,
+    required TResult Function(RemoveUserRoomEvent value) removeUser,
     required TResult Function(StartGameEvent value) startGame,
     required TResult Function(LoadGameEvent value) loadGame,
     required TResult Function(SendMessageEvent value) sendMessage,
+    required TResult Function(UpdateGameEvent value) updateGame,
     required TResult Function(UpdateNoteEvent value) updateNote,
     required TResult Function(UpdateWordEvent value) updateWord,
   }) {
@@ -1745,9 +2339,11 @@ class _$UpdateWordEventImpl implements UpdateWordEvent {
     TResult? Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult? Function(DeleteRoomEvent value)? delete,
     TResult? Function(AddUserRoomEvent value)? addUser,
+    TResult? Function(RemoveUserRoomEvent value)? removeUser,
     TResult? Function(StartGameEvent value)? startGame,
     TResult? Function(LoadGameEvent value)? loadGame,
     TResult? Function(SendMessageEvent value)? sendMessage,
+    TResult? Function(UpdateGameEvent value)? updateGame,
     TResult? Function(UpdateNoteEvent value)? updateNote,
     TResult? Function(UpdateWordEvent value)? updateWord,
   }) {
@@ -1761,9 +2357,11 @@ class _$UpdateWordEventImpl implements UpdateWordEvent {
     TResult Function(CreatePrivateRoomEvent value)? createPrivateRoom,
     TResult Function(DeleteRoomEvent value)? delete,
     TResult Function(AddUserRoomEvent value)? addUser,
+    TResult Function(RemoveUserRoomEvent value)? removeUser,
     TResult Function(StartGameEvent value)? startGame,
     TResult Function(LoadGameEvent value)? loadGame,
     TResult Function(SendMessageEvent value)? sendMessage,
+    TResult Function(UpdateGameEvent value)? updateGame,
     TResult Function(UpdateNoteEvent value)? updateNote,
     TResult Function(UpdateWordEvent value)? updateWord,
     required TResult orElse(),

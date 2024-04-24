@@ -26,15 +26,16 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
     //TODO: To avoid unnecessary writing while testing:
 
     // currentUser = await _userService.create();
-    currentUser = (await _userService.read(uid: '-NuiMEIkYmsWGKPmWO4d'))!;
+    // currentUser = (await _userService.read(uid: '-NuiMEIkYmsWGKPmWO4d'))!;
 
-    // if (FirebaseAuth.instance.currentUser != null) {
-    //   currentUser = (await _userService.read(
-    //       uid: FirebaseAuth.instance.currentUser!.uid))!;
-    // } else {
-    //   print('creating');
-    //   currentUser = await _userServiуce.create();
-    // }
+    if (FirebaseAuth.instance.currentUser != null) {
+      print('old');
+      currentUser = (await _userService.read(
+          uid: FirebaseAuth.instance.currentUser!.uid))!;
+    } else {
+      print('creating');
+      currentUser = await _userService.create();
+    }
     state.mapOrNull(
       initial: (value) =>
           emit(UsersState.loaded(uid: currentUser.uid, name: currentUser.name)),

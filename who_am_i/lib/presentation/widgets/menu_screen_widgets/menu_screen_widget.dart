@@ -9,20 +9,24 @@ import 'package:who_am_i/presentation/widgets/menu_screen_widgets/room_dialog_wi
 
 class MenuScreenWidget extends StatelessWidget {
   final UserModel user;
+  final TextEditingController nameController;
   const MenuScreenWidget({
     super.key,
-    required this.user,
+    required this.user, required this.nameController,
   });
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameController =
-        TextEditingController(text: user.name);
     return BlocBuilder<RoomsBloc, RoomsState>(
       builder: (context, state) {
+        // TextEditingController roomController = TextEditingController();
         return state.maybeMap(
           loaded: (value) {
-            return RoomDialogWidget(roomID: value.roomID);
+            return RoomDialogWidget(
+              roomID: value.roomID,
+              currentUid: user.uid,
+              // roomController: roomController,
+            );
           },
           orElse: () {
             return SafeArea(
@@ -52,10 +56,12 @@ class MenuScreenWidget extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 16.0),
                       child: MenuButtonWidget(
-                        onTap: () => (context
-                            .read<UsersBloc>()
-                            .add(UpdateUserEvent(name: nameController.text))),
-                        text: 'Сохранить имя пользователя',
+                        onTap: () {
+                          context
+                              .read<RoomsBloc>()
+                              .add(LoadGameEvent(user: user, roomID: ''));
+                        },
+                        text: 'Перейти по коду комнаты',
                       ),
                     ),
                     Padding(

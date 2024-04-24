@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,7 @@ class RoomScreenWidget extends StatelessWidget {
     return BlocBuilder<RoomsBloc, RoomsState>(
       builder: (context, state) {
         //Listener here?
+
         return state.maybeMap(
           initial: (value) {
             //Start game event
@@ -26,12 +28,21 @@ class RoomScreenWidget extends StatelessWidget {
             return Container();
           },
           inGame: (value) {
+            DatabaseReference databaseRef =
+                FirebaseDatabase.instance.ref('rooms/${value.roomID}');
+            databaseRef.onValue.listen((event) {
+              context.read<RoomsBloc>().add(UpdateGameEvent(
+                  user: user, roomID: roomID, snapshot: event.snapshot));
+            });
             return Scaffold(
               appBar: AppBar(
                 leading: IconButton(
-                    onPressed: () => context
-                        .read<RoomsBloc>()
-                        .add(const InitRoomsEvent()), //TODO: remove user here
+                    onPressed: () {
+                      // context.read<RoomsBloc>().add(const InitRoomsEvent());
+                      context.read<RoomsBloc>().add(RemoveUserRoomEvent(
+                          roomID: value.roomID, uid: user.uid));
+                      Navigator.of(context).pop();
+                    },
                     icon: const Icon(
                       Icons.arrow_back,
                       size: 16,
@@ -48,22 +59,40 @@ class RoomScreenWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          //Stack containers
-                          PlayerContainerWidget(
-                            user: value.users[0],
-                            currentUserUid: user.uid,
-                            word: 'Boo', //value.usersWords[0],
-                          ),
-                          PlayerContainerWidget(
-                            user: value.users[0],
-                            currentUserUid: user.uid,
-                            word: 'Boo', //value.usersWords[0],
-                          ),
-                        ],
+                      child: SizedBox(
+                        height: 250,
+                        child: Center(
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: value.users.length,
+                              itemBuilder: (context, index) {
+                                return PlayerContainerWidget(
+                                    user: value.users[index],
+                                    currentUserUid: user.uid,
+                                    word: value.usersWords[index]);
+                              }),
+                        ),
                       ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                      //     //Stack containers
+                      //     ListView.builder(
+                      //         itemCount: value.users.length,
+                      //         itemBuilder: (context, index) {
+                      //           return PlayerContainerWidget(
+                      //               user: value.users[index],
+                      //               currentUserUid: user.uid,
+                      //               word: value.usersWords[index]);
+                      //         }),
+                      //     // PlayerContainerWidget(
+                      //     //   user: value.users[0],
+                      //     //   currentUserUid: user.uid,
+                      //     //   word: 'Boo', //value.usersWords[0],
+                      //     // ),
+                      //   ],
+                      // ),
                     ),
                     Container(
                       decoration: BoxDecoration(border: Border.all()),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:who_am_i/blocks/users/users_bloc.dart';
 
 class NameTextFieldWidget extends StatefulWidget {
   final TextEditingController controller;
@@ -22,7 +24,16 @@ class _NameTextfieldWidgetState extends State<NameTextFieldWidget> {
           decoration: const InputDecoration(
             hintText: 'Name',
           ),
+          onEditingComplete: () {
+            context
+                .read<UsersBloc>()
+                .add(UpdateUserEvent(name: widget.controller.text));
+          },
+          onChanged: (value) {},
           onTapOutside: (event) {
+            context
+                .read<UsersBloc>()
+                .add(UpdateUserEvent(name: widget.controller.text));
             FocusManager.instance.primaryFocus?.unfocus();
           }),
     );

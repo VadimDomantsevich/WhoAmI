@@ -10,8 +10,13 @@ class RoomsEvent with _$RoomsEvent {
     required String roomID,
   }) = DeleteRoomEvent;
   const factory RoomsEvent.addUser({
+    required String roomID,
     required UserModel user,
   }) = AddUserRoomEvent;
+  const factory RoomsEvent.removeUser({
+    required String roomID,
+    required String uid,
+  }) = RemoveUserRoomEvent;
   const factory RoomsEvent.startGame({
     required UserModel user,
     required String roomID,
@@ -23,6 +28,11 @@ class RoomsEvent with _$RoomsEvent {
   const factory RoomsEvent.sendMessage({
     required MessageModel message,
   }) = SendMessageEvent;
+  const factory RoomsEvent.updateGame({
+    required UserModel user,
+    required String roomID,
+    required DataSnapshot snapshot,
+  }) = UpdateGameEvent;
   const factory RoomsEvent.updateNote({
     required UserModel user,
     required String note,

@@ -18,6 +18,7 @@ class RoomsBloc extends Bloc<RoomsEvent, RoomsState> {
     on<StartGameEvent>(_onStartGameEvent);
     on<LoadGameEvent>(_onLoadGameEvent);
     on<UpdateGameEvent>(_onUpdateGameEvent);
+    on<ListenRoomEvent>(_onListenRoomEvent);
     on<UpdateNoteEvent>(_onUpdateNoteEvent);
     on<SendMessageEvent>(_onSendMessageEvent);
     on<UpdateWordEvent>(_onUpdateWordEvent);
@@ -30,7 +31,6 @@ class RoomsBloc extends Bloc<RoomsEvent, RoomsState> {
     InitRoomsEvent event,
     Emitter<RoomsState> emit,
   ) async {
-    // _roomService.deleteEmptyRooms();
     emit(const RoomsState.initial());
   }
 
@@ -38,9 +38,7 @@ class RoomsBloc extends Bloc<RoomsEvent, RoomsState> {
     CreatePrivateRoomEvent event,
     Emitter<RoomsState> emit,
   ) async {
-    //TODO: To avoid unnecessary writing while testing:
     final room = await _roomService.createPrivateRoom(user: event.user);
-    // final room = await _roomService.read(roomID: '64G067');
     emit(RoomsState.loaded(
       roomID: room.roomID,
       name: room.name,
@@ -53,8 +51,6 @@ class RoomsBloc extends Bloc<RoomsEvent, RoomsState> {
     LoadGameEvent event,
     Emitter<RoomsState> emit,
   ) async {
-    //TODO: To avoid unnecessary writing while testing:
-    // final room = await _roomService.createPrivateRoom(user: event.user);
     if (event.roomID.isEmpty) {
       emit(RoomsState.loaded(
         roomID: '',
@@ -77,7 +73,6 @@ class RoomsBloc extends Bloc<RoomsEvent, RoomsState> {
     UpdateGameEvent event,
     Emitter<RoomsState> emit,
   ) async {
-    // print('value: ${event.snapshot.value}');
     Map<dynamic, dynamic>? map = event.snapshot.value as Map?;
     if (map != null) {
       //users
@@ -102,30 +97,32 @@ class RoomsBloc extends Bloc<RoomsEvent, RoomsState> {
           usersWords.add(value);
         });
       } else {
-        for (var element in users) {
+        for (var _ in users) {
           usersWords.add('');
         }
       }
       //messages
       List<MessageModel>? messages = List.empty(growable: true);
-      final messagesMap = Map.from(map['messages']);
-      messagesMap.forEach((key, value) {
-        //key == timestamp, value == map
-        final timestamp = key;
-        final messageMap = Map.from(value);
-        final messageUid = messageMap['uid'];
-        final messageName = messageMap['name'];
-        final message = messageMap['message'];
-        messages.add(MessageModel(
-            uid: messageUid,
-            name: messageName,
-            message: message,
-            timestamp:
-                DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp))));
-      });
-      messages.sort(
-        (a, b) => b.timestamp.compareTo(a.timestamp),
-      );
+
+      if (map['messages'] != null) {
+        final messagesMap = Map.from(map['messages']);
+        messagesMap.forEach((key, value) {
+          final timestamp = key;
+          final messageMap = Map.from(value);
+          final messageUid = messageMap['uid'];
+          final messageName = messageMap['name'];
+          final message = messageMap['message'];
+          messages.add(MessageModel(
+              uid: messageUid,
+              name: messageName,
+              message: message,
+              timestamp:
+                  DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp))));
+        });
+        messages.sort(
+          (a, b) => b.timestamp.compareTo(a.timestamp),
+        );
+      }
       emit(RoomsState.inGame(
         roomID: event.roomID,
         users: users,
@@ -136,23 +133,26 @@ class RoomsBloc extends Bloc<RoomsEvent, RoomsState> {
     }
   }
 
+  Future<void> _onListenRoomEvent(
+    ListenRoomEvent event,
+    Emitter<RoomsState> emit,
+  ) async {
+    DatabaseReference databaseRef =
+        FirebaseDatabase.instance.ref('rooms/${event.roomID}');
+
+    databaseRef.onValue.listen((databaseEvent) {
+      add(UpdateGameEvent(
+          user: event.user,
+          roomID: event.roomID,
+          snapshot: databaseEvent.snapshot));
+    });
+  }
+
   Future<void> _onAddUserRoomEvent(
     AddUserRoomEvent event,
     Emitter<RoomsState> emit,
   ) async {
     await _roomService.addUser(roomID: event.roomID, user: event.user);
-    // state.mapOrNull(
-    //   inGame: (value) async {
-        
-    //   },
-    // );
-    // final room = await _roomService.createPrivateRoom(user: event.user);
-    // emit(RoomsState.loaded(
-    //   roomID: room.roomID,
-    //   name: room.name,
-    //   isPrivate: true,
-    //   users: room.users,
-    // ));
   }
 
   Future<void> _onRemoveUserRoomEvent(

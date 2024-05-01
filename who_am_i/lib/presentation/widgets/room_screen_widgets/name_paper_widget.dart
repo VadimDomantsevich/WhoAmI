@@ -13,8 +13,11 @@ class NamePaperWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController(text: word);
+    controller.selection = TextSelection.fromPosition(TextPosition(
+      offset: controller.text.length,
+    ));
     return Container(
-      height: 40,
+      height: 50,
       width: 130,
       decoration: BoxDecoration(
           border: Border.all(),
@@ -28,14 +31,19 @@ class NamePaperWidget extends StatelessWidget {
                 '?',
                 style: TextStyle(fontSize: 24, overflow: TextOverflow.ellipsis),
               )
-            : TextField(
-                controller: controller,
-                decoration: const InputDecoration(border: InputBorder.none),
-                onChanged: (value) {
-                  context
-                      .read<RoomsBloc>()
-                      .add(UpdateWordEvent(user: user, word: controller.text));
-                },
+            : Padding(
+                padding:
+                    const EdgeInsets.only(left: 8.0, right: 8, bottom: 8, top: 6),
+                child: TextField(
+                  controller: controller,
+                  maxLines: 10,
+                  style: const TextStyle(fontSize: 9),
+                  decoration: const InputDecoration(border: InputBorder.none,isDense: true),
+                  onChanged: (value) {
+                    context.read<RoomsBloc>().add(
+                        UpdateWordEvent(user: user, word: controller.text));
+                  },
+                ),
               ),
       ),
     );

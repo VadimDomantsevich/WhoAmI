@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:who_am_i/blocks/rooms/rooms_bloc.dart';
-import 'package:who_am_i/blocks/users/users_bloc.dart';
 import 'package:who_am_i/data/models/user.dart';
 import 'package:who_am_i/presentation/widgets/menu_screen_widgets/menu_button_widget.dart';
 import 'package:who_am_i/presentation/widgets/menu_screen_widgets/name_textfield_widget.dart';
@@ -19,13 +18,11 @@ class MenuScreenWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RoomsBloc, RoomsState>(
       builder: (context, state) {
-        // TextEditingController roomController = TextEditingController();
         return state.maybeMap(
           loaded: (value) {
             return RoomDialogWidget(
               roomID: value.roomID,
               currentUid: user.uid,
-              // roomController: roomController,
             );
           },
           orElse: () {

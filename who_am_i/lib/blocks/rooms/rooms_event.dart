@@ -41,4 +41,8 @@ class RoomsEvent with _$RoomsEvent {
     required UserModel user,
     required String word,
   }) = UpdateWordEvent;
+  const factory RoomsEvent.listenRoom({
+    required UserModel user,
+    required String roomID,
+  }) = ListenRoomEvent;
 }

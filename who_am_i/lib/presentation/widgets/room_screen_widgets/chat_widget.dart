@@ -19,7 +19,7 @@ class ChatWidget extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.3,
-        width: MediaQuery.of(context).size.width * 0.4,
+        width: MediaQuery.of(context).size.width * 0.9,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -42,17 +42,20 @@ class ChatWidget extends StatelessWidget {
                 : Container(),
             SizedBox(
                 height: 40,
-                width: MediaQuery.of(context).size.width * 0.4,
+                width: MediaQuery.of(context).size.width * 0.9,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.4 - 65,
+                        width: MediaQuery.of(context).size.width * 0.9 - 65,
                         child: TextField(
                           controller: controller,
                           style: const TextStyle(fontSize: 16),
+                          onTapOutside: (event) {
+                            FocusScope.of(context).requestFocus(FocusNode());
+                          },
                         ),
                       ),
                     ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:who_am_i/data/models/user.dart';
 import 'package:who_am_i/presentation/widgets/room_screen_widgets/name_paper_widget.dart';
 
@@ -7,11 +6,13 @@ class PlayerContainerWidget extends StatefulWidget {
   final UserModel user;
   final String currentUserUid;
   final String word;
+  final String note;
   const PlayerContainerWidget(
       {super.key,
       required this.user,
       required this.currentUserUid,
-      required this.word});
+      required this.word,
+      required this.note});
 
   @override
   State<PlayerContainerWidget> createState() => _PlayerContainerWidgetState();
@@ -19,7 +20,8 @@ class PlayerContainerWidget extends StatefulWidget {
 
 class _PlayerContainerWidgetState extends State<PlayerContainerWidget> {
   double dyStartOffset = 10;
-  double dyMaxOffset = 165;
+  double dyMaxOffset = 155;
+  bool isNoteOpen = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -76,7 +78,47 @@ class _PlayerContainerWidgetState extends State<PlayerContainerWidget> {
                 });
               },
             ),
-          )
+          ),
+          isNoteOpen
+              ? Positioned(
+                  left: 10,
+                  top: 10,
+                  child: Container(
+                    height: 100,
+                    width: 130,
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      color: Colors.brown.shade100,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 4.0, right: 4.0, top: 2.0),
+                      child: SelectableText(
+                        widget.note,
+                        style: const TextStyle(
+                          fontSize: 9,
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              : Container(),
+          widget.currentUserUid != widget.user.uid
+              ? Positioned(
+                  top: 4,
+                  right: 10,
+                  child: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isNoteOpen = !isNoteOpen;
+                      });
+                    },
+                    icon: const Icon(
+                      Icons.notes,
+                      size: 10,
+                    ),
+                  ),
+                )
+              : Container(),
         ],
       ),
     );

@@ -24,6 +24,7 @@ class BlocRoomScreenWidget extends StatelessWidget {
           create: (context) => UsersBloc(UserService()),
         ),
       ],
+      
       child: RoomScreenWidget(
         roomID: roomID,
         user: user,

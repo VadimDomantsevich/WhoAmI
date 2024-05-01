@@ -14,31 +14,28 @@ class RoomScreenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     TextEditingController noteController = TextEditingController();
+    DatabaseReference databaseRef =
+        FirebaseDatabase.instance.ref('rooms/$roomID');
+
+    var stream = databaseRef.onValue.listen((databaseEvent) {
+      context.read<RoomsBloc>().add(UpdateGameEvent(
+          user: user, roomID: roomID, snapshot: databaseEvent.snapshot));
+    });
     return BlocBuilder<RoomsBloc, RoomsState>(
       builder: (context, state) {
-        //Listener here?
-
         return state.maybeMap(
           initial: (value) {
-            //Start game event
-            context
-                .read<RoomsBloc>()
-                .add(StartGameEvent(user: user, roomID: roomID));
             return Container();
           },
           inGame: (value) {
-            DatabaseReference databaseRef =
-                FirebaseDatabase.instance.ref('rooms/${value.roomID}');
-            databaseRef.onValue.listen((event) {
-              context.read<RoomsBloc>().add(UpdateGameEvent(
-                  user: user, roomID: roomID, snapshot: event.snapshot));
-            });
             return Scaffold(
+              key: scaffoldKey,
               appBar: AppBar(
                 leading: IconButton(
                     onPressed: () {
-                      // context.read<RoomsBloc>().add(const InitRoomsEvent());
+                      stream.cancel();
                       context.read<RoomsBloc>().add(RemoveUserRoomEvent(
                           roomID: value.roomID, uid: user.uid));
                       Navigator.of(context).pop();
@@ -55,73 +52,58 @@ class RoomScreenWidget extends StatelessWidget {
                 ),
               ),
               body: SafeArea(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        height: 250,
-                        child: Center(
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: value.users.length,
-                              itemBuilder: (context, index) {
-                                return PlayerContainerWidget(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          height: 250,
+                          child: Center(
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: value.users.length,
+                                itemBuilder: (context, index) {
+                                  return PlayerContainerWidget(
                                     user: value.users[index],
                                     currentUserUid: user.uid,
-                                    word: value.usersWords[index]);
-                              }),
+                                    word: value.usersWords[index],
+                                    note: value.usersNotes[index],
+                                  );
+                                }),
+                          ),
                         ),
                       ),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   children: [
-                      //     //Stack containers
-                      //     ListView.builder(
-                      //         itemCount: value.users.length,
-                      //         itemBuilder: (context, index) {
-                      //           return PlayerContainerWidget(
-                      //               user: value.users[index],
-                      //               currentUserUid: user.uid,
-                      //               word: value.usersWords[index]);
-                      //         }),
-                      //     // PlayerContainerWidget(
-                      //     //   user: value.users[0],
-                      //     //   currentUserUid: user.uid,
-                      //     //   word: 'Boo', //value.usersWords[0],
-                      //     // ),
-                      //   ],
-                      // ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(border: Border.all()),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 16.0, horizontal: 8),
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.4,
-                              child: CupertinoTextField(
-                                controller: noteController,
-                                placeholder: 'Заметки',
-                                maxLines: 2,
-                                minLines: 2,
-                                onChanged: (event) => context
-                                    .read<RoomsBloc>()
-                                    .add(UpdateNoteEvent(
-                                        user: user, note: noteController.text)),
+                      Container(
+                        decoration: BoxDecoration(border: Border.all()),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 16.0, horizontal: 8),
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.9,
+                                child: CupertinoTextField(
+                                  controller: noteController,
+                                  placeholder: 'Заметки',
+                                  maxLines: 2,
+                                  minLines: 2,
+                                  onChanged: (event) => context
+                                      .read<RoomsBloc>()
+                                      .add(UpdateNoteEvent(
+                                          user: user, note: noteController.text)),
+                                ),
                               ),
                             ),
-                          ),
-                          ChatWidget(
-                              messageHistory: value.messages, user: user),
-                        ],
+                            ChatWidget(
+                                messageHistory: value.messages, user: user),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );

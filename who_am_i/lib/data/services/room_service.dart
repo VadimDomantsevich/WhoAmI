@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:who_am_i/data/models/message.dart';
 import 'package:who_am_i/data/models/room.dart';
@@ -17,6 +16,12 @@ class RoomService {
       'users': {
         user.uid: user.name,
       },
+      'usersWords': {
+        user.uid: '',
+      },
+      'usersNotes': {
+        user.uid: '',
+      }
     };
     await databaseRef.ref.child(roomKey).set(newRoom);
     return RoomModel(
@@ -57,23 +62,21 @@ class RoomService {
         FirebaseDatabase.instance.ref('rooms/$roomID/users');
     final newUser = {user.uid: user.name};
     await databaseRef.update(newUser);
-    // TransactionResult result = await databaseRef.runTransaction((room) {
-    //   Map<String, dynamic> _room = Map<String, dynamic>.from(room as Map);
-    //   _room["users"] = users;
-
-    //   // databaseRef.update({
-    //   //   "users": users,
-    //   // });
-    //   return Transaction.success(room);
-    // });
+    databaseRef = FirebaseDatabase.instance.ref('rooms/$roomID/usersWords');
+    await databaseRef.update({user.uid: ''});
+    databaseRef = FirebaseDatabase.instance.ref('rooms/$roomID/usersNotes');
+    await databaseRef.update({user.uid: ''});
   }
 
   Future<void> removeUser({required String roomID, required String uid}) async {
     DatabaseReference databaseRef =
         FirebaseDatabase.instance.ref('rooms/$roomID/users/$uid');
-    print('inside');
-    final snapshot = await databaseRef.get();
-    print(snapshot.value);
+    await databaseRef.remove();
+    databaseRef =
+        FirebaseDatabase.instance.ref('rooms/$roomID/usersWords/$uid');
+    await databaseRef.remove();
+    databaseRef =
+        FirebaseDatabase.instance.ref('rooms/$roomID/usersNotes/$uid');
     await databaseRef.remove();
   }
 
@@ -106,12 +109,10 @@ class RoomService {
         //messages
         List<MessageModel>? messages = List.empty(growable: true);
         final messagesMap = Map.from(map['messages']);
-        // print('messagesMap: $messagesMap');
+        
         messagesMap.forEach((key, value) {
-          //key == timestamp, value == map
           final timestamp = key;
           final messageMap = Map.from(value);
-          // print('messageMap: $messageMap');
           final messageUid = messageMap['uid'];
           final messageName = messageMap['name'];
           final message = messageMap['message'];
@@ -143,33 +144,6 @@ class RoomService {
 
   Future<RoomModel> startGame(
       {required String roomID, required UserModel user}) async {
-    DatabaseReference databaseRef =
-        FirebaseDatabase.instance.ref('rooms/$roomID');
-    // List<String> usersNotes = [
-    //   '',
-    // ];
-    // List<String> usersWords = [
-    //   '',
-    // ];
-    final messages = {
-      '${DateTime.timestamp().millisecondsSinceEpoch}': {
-        'uid': "",
-        'name': "",
-        'message': "",
-      },
-      // '${DateTime.timestamp().millisecondsSinceEpoch}': {
-      //   'uid': "-NuiMEIkYmsWGKPmWO4d",
-      //   'name': "username1",
-      //   'message': "Test",
-      // }
-    };
-    final updatedRoom = {
-      // 'usersNotes': usersNotes,
-      // 'usersWords': usersWords,
-      'messages': messages,
-    };
-    await databaseRef.update(updatedRoom);
-    //test
     return RoomModel(
       roomID: roomID,
       name: 'user',
@@ -178,15 +152,6 @@ class RoomService {
       usersNotes: [''],
       usersWords: [''],
       messages: [],
-      // <MessageModel>[
-      //   MessageModel(
-      //       uid: "-NuiMEIkYmsWGKPmWO4d",
-      //       name: "username1",
-      //       message:
-      //           "Test",
-      //       timestamp: DateTime.timestamp()),
-
-      // ], //TODO:[] test
     );
   }
 
@@ -227,7 +192,6 @@ class RoomService {
     final word = {
       uid: updatedWord,
     };
-    print('word: ${word}');
     await databaseRef.update(word);
   }
 
@@ -242,7 +206,7 @@ class RoomService {
     final snapshot = await databaseRef.get();
     if (snapshot.exists) {
       Map<dynamic, dynamic>? map = snapshot.value as Map?;
-      // print(map);
+
       if (map != null) {
         map.forEach((key, value) {
           // if(key[])
@@ -256,7 +220,7 @@ class RoomService {
   }
 
   final _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-  Random _rnd = Random();
+  final _rnd = Random();
 
   String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));

@@ -1,5 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,11 +12,8 @@ import 'firebase_options.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    // name: "WhoAmIGame",
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // UserCredential userCredential =
-  //     await FirebaseAuth.instance.signInAnonymously();
   runApp(
     MultiBlocProvider(
       providers: [

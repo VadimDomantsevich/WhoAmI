@@ -1,6 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:who_am_i/data/services/user_service.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({

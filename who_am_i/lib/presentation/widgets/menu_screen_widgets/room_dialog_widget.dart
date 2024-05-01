@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:who_am_i/blocks/rooms/rooms_bloc.dart';
 import 'package:who_am_i/blocks/users/users_bloc.dart';
 import 'package:who_am_i/data/models/user.dart';
@@ -23,35 +22,32 @@ class RoomDialogWidget extends StatelessWidget {
         leading: IconButton(
             onPressed: () {
               context.read<RoomsBloc>().add(const InitRoomsEvent());
-              // context
-              //     .read<RoomsBloc>()
-              //     .add(RemoveUserRoomEvent(uid: currentUid));
             },
             icon: const Icon(
               Icons.arrow_back,
               size: 16,
             )),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: roomID.isNotEmpty
-                ? IconButton(
-                    onPressed: () {
-                      Share.share(roomID);
-                    },
-                    icon: const Icon(
-                      Icons.share,
-                      size: 16,
-                    ))
-                : Container(),
-          )
+        actions: const [
+          // Padding(
+          //   padding: const EdgeInsets.only(right: 8.0),
+          //   child: roomID.isNotEmpty
+          //       ? IconButton(
+          //           onPressed: () {
+          //             // Share.share(roomID);
+          //           },
+          //           icon: const Icon(
+          //             Icons.share,
+          //             size: 16,
+          //           ))
+          //       : Container(),
+          // )
         ],
       ),
       body: SafeArea(
         child: Center(
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.21,
-            width: MediaQuery.of(context).size.width * 0.2,
+            height: MediaQuery.of(context).size.height * 0.41,
+            width: MediaQuery.of(context).size.width * 0.6,
             decoration: BoxDecoration(
               border: Border.all(),
             ),
@@ -69,7 +65,7 @@ class RoomDialogWidget extends StatelessWidget {
                             });
                           },
                           child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.1,
+                            height: MediaQuery.of(context).size.height * 0.2,
                             child: Center(
                               child: SelectableText(
                                 roomID,
@@ -78,14 +74,8 @@ class RoomDialogWidget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          )
-                          // TextField(
-                          //   controller: roomController,
-                          //   style: const TextStyle(fontSize: 36.0),
-                          //   decoration:
-                          //       const InputDecoration(border: InputBorder.none),
-                          // ),
-                          )
+                          ),
+                        )
                       : Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: TextField(
@@ -116,10 +106,10 @@ class RoomDialogWidget extends StatelessWidget {
                                   },
                                   child: SizedBox(
                                     width: MediaQuery.of(context).size.width *
-                                            0.1 -
-                                        10,
+                                            0.3 -
+                                        1,
                                     height: MediaQuery.of(context).size.height *
-                                        0.1,
+                                        0.2,
                                     child: const Center(
                                         child: Text(
                                       'Скопировать',
@@ -137,31 +127,35 @@ class RoomDialogWidget extends StatelessWidget {
                                       if (await RoomService().read(
                                               roomID: roomController.text) !=
                                           null) {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: ((context) =>
-                                                    BlocRoomScreenWidget(
-                                                      roomID:
-                                                          roomController.text,
-                                                      user: UserModel(
-                                                          uid: value.uid,
-                                                          name: value.name),
-                                                    ))));
+                                        if (context.mounted) {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: ((context) =>
+                                                      BlocRoomScreenWidget(
+                                                        roomID:
+                                                            roomController.text,
+                                                        user: UserModel(
+                                                            uid: value.uid,
+                                                            name: value.name),
+                                                      ))));
+                                        }
                                       } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(const SnackBar(
-                                                content: Center(
-                                                    child: Text(
-                                                        'Комната не найдена'))));
+                                        if (context.mounted) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  content: Center(
+                                                      child: Text(
+                                                          'Комната не найдена'))));
+                                        }
                                       }
                                     },
                                     child: SizedBox(
                                       width: MediaQuery.of(context).size.width *
-                                              0.1 -
-                                          10,
+                                              0.3 -
+                                          1,
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.1,
+                                              0.2,
                                       child: const Center(
                                           child: Text(
                                         'Перейти',
@@ -191,28 +185,34 @@ class RoomDialogWidget extends StatelessWidget {
                                           null) {
                                         final user = UserModel(
                                             uid: value.uid, name: value.name);
-                                        context.read<RoomsBloc>().add(
-                                            AddUserRoomEvent(
-                                                roomID: roomController.text
-                                                    .toUpperCase(),
-                                                user: user));
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: ((context) =>
-                                                    BlocRoomScreenWidget(
-                                                      roomID: roomController
-                                                          .text
-                                                          .toUpperCase(),
-                                                      user: UserModel(
-                                                          uid: value.uid,
-                                                          name: value.name),
-                                                    ))));
+                                        if (context.mounted) {
+                                          context.read<RoomsBloc>().add(
+                                              AddUserRoomEvent(
+                                                  roomID: roomController.text
+                                                      .toUpperCase(),
+                                                  user: user));
+                                        }
+                                        if (context.mounted) {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: ((context) =>
+                                                      BlocRoomScreenWidget(
+                                                        roomID: roomController
+                                                            .text
+                                                            .toUpperCase(),
+                                                        user: UserModel(
+                                                            uid: value.uid,
+                                                            name: value.name),
+                                                      ))));
+                                        }
                                       } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(const SnackBar(
-                                                content: Center(
-                                                    child: Text(
-                                                        'Комната не найдена'))));
+                                        if (context.mounted) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  content: Center(
+                                                      child: Text(
+                                                          'Комната не найдена'))));
+                                        }
                                       }
                                     },
                                     child: const Center(
